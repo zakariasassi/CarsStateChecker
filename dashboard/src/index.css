@@ -1,8 +1,35 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-*{
-    padding: 0;
-    margin: 0;
-    font-family: tajawal;
-}
+@font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-family: 'Roboto';
+    src: url('./assets//fonts/Tajawal-Medium.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-family: 'Roboto';
+    src: url('./assets//fonts/Tajawal-Bold.ttf') format('truetype');
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Tajawal';
+    font-style: normal;
+    font-family: 'Roboto';
+    src: url('./assets//fonts/Tajawal-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 200;
+  }
+
+  body {
+    padding: 0px;
+    margin: 0px;
+    
+    font-family: Tajawal;
+  }
