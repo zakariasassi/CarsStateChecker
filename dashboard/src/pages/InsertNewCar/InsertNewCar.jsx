@@ -15,63 +15,74 @@ function InsertNewCar() {
         <div className="w-100" style={{ height: "100vh" }}>
           <div className="p-lg-5" style={{float:'right' , width:'100%'}}>
 
-            <h3 style={{textAlign:'right'}}>ادخال بيانات مركبة جديده</h3>
        
-          <div className="row">
-            <div className="col">
-            <input type="text" className="form-control" id="inputEmail4" placeholder="بقسم تراخيص" />
+            <div className="max-w-100 mx-auto" dir='rtl'>
+  <h2 className="text-2xl font-bold mb-4">بيانات السيارة</h2>
 
-            </div>
-            <div className="col">
+  <div className="grid grid-cols-2 gap-4">
+    <div className="mb-4">
+      <label className="block text-lg mb-2">رقم اللوحة المعدنية:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            <input type="date" className="form-control" id="inputEmail4" placeholder="بقسم تراخيص" />
+    <div className="mb-4">
+      <label className="block text-lg mb-2">بلد الصنع:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </div>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">سنة الصنع:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          </div>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">رقم الهيكل:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          <div className="row">
-            <div className="col mt-3">
-            <input type="text" className="form-control" id="inputEmail4" placeholder="اعطي لها الرقم التالي" />
+    <div className="mb-4">
+      <label className="block text-lg mb-2">قوة المحرك بالحصان:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </div>
-            <div className="col ">
+    <div className="mb-4">
+      <label className="block text-lg mb-2">عدد الركاب المصرح بهم بخلاف السائق:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            <label>لاستعمالها</label>
-            <select className="form-control">
-              <option></option>
-              <option>خاصة</option>
-              <option>نقل</option>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">الحمولة بالطن:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </select>
-            </div>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">الغرض من ترخيص السيارة:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          </div>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">الجهة المقيد بها:</label>
+      <input className="form-control" type="text" />
+    </div>
 
+    <div className="mb-4">
+      <label className="block text-lg mb-2">النوع:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          <div className="row">
-            <div className="col mt-3">
-              <input className="form-control" placeholder="اسم المالك" />
-              </div>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">اللون:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-              <div className="col mt-3">
-              <input className="form-control" placeholder="رقم بطاقة الشخصية" />
-              </div>
-
-              <div className="col ">
-
-<label>الاصدار</label>
-<select className="form-control">
-  <option></option>
-  <option>طرابلس</option>
-  <option>بنغازي</option>
-  <option>سبها</option>
-  <option>مصراته</option>
-
-</select>
+    <div className="mb-4">
+      <label className="block text-lg mb-2">رقم المحرك:</label>
+      <input className="form-control" type="text" />
+    </div>
+  </div>
 </div>
 
-              </div>
+
 
 
 

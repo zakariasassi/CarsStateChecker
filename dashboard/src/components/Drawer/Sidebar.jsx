@@ -154,7 +154,7 @@ export default function Sidebar() {
         
             >
 
-                تسجيل مركبة
+                 تسجيل مركبة جمركية
             </ListItemText>
             </Link>
           </MenuItem>
@@ -174,7 +174,7 @@ export default function Sidebar() {
                     padding: "10px",
                 }}
               >
-               عرض المركبات المسجلة
+               عرض المركبات الجمركية المسجلة
             </ListItemText>
             </Link>
           </MenuItem>

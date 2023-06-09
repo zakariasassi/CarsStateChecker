@@ -16,63 +16,94 @@ function AddNewJomrocCard() {
         <div className="w-100" style={{ height: "100vh" }}>
           <div className="p-lg-5" style={{float:'right' , width:'100%'}}>
 
-            <h3 style={{textAlign:'right'}}>ادخال بيانات مركبة جديده</h3>
        
-          <div className="row">
-            <div className="col">
-            <input type="text" className="form-control" id="inputEmail4" placeholder="بقسم تراخيص" />
+            <div className="max-w-100 mx-auto" dir='rtl'>
+  <h2 className="text-2xl font-bold mb-4">بيانات الجمارك </h2>
 
-            </div>
-            <div className="col">
+  <div className="grid grid-cols-3 gap-4 mb-4">
+    <div>
+      <label className="block text-lg mb-2">رقم إذن الإفراج الجمركي:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            <input type="date" className="form-control" id="inputEmail4" placeholder="بقسم تراخيص" />
+    <div>
+      <label className="block text-lg mb-2">يفرج عن البضاعة الموضحة أدناه من الحيازة الجمركية:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </div>
+    <div>
+      <label className="block text-lg mb-2">اسم السفينة:</label>
+      <input className="form-control" type="text" />
+    </div>
+  </div>
 
-          </div>
+  <div className="grid grid-cols-2 gap-4">
+    <div>
+      <label className="block text-lg mb-2">تاريخ وصولها:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          <div className="row">
-            <div className="col mt-3">
-            <input type="text" className="form-control" id="inputEmail4" placeholder="اعطي لها الرقم التالي" />
+    <div>
+      <label className="block text-lg mb-2">اسم المستورد:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </div>
-            <div className="col ">
+    <div>
+      <label className="block text-lg mb-2">رقم الإقرار الجمركي:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            <label>لاستعمالها</label>
-            <select className="form-control">
-              <option></option>
-              <option>خاصة</option>
-              <option>نقل</option>
+    <div>
+      <label className="block text-lg mb-2">رقم الإيصال الجمركي:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-            </select>
-            </div>
+    <div>
+      <label className="block text-lg mb-2">مكان تخزين البضاعة:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          </div>
+    <div>
+      <label className="block text-lg mb-2">رقم المخزن:</label>
+      <input className="form-control" type="text" />
+    </div>
 
+    <div>
+      <label className="block text-lg mb-2">عدد الطرود:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-          <div className="row">
-            <div className="col mt-3">
-              <input className="form-control" placeholder="اسم المالك" />
-              </div>
+    <div>
+      <label className="block text-lg mb-2">أرقام ووصف الطرود:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-              <div className="col mt-3">
-              <input className="form-control" placeholder="رقم بطاقة الشخصية" />
-              </div>
+    <div>
+      <label className="block text-lg mb-2">المبلغ الإجمالي:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-              <div className="col ">
+    <div>
+      <label className="block text-lg mb-2">بوليصة الشحن:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-<label>الاصدار</label>
-<select className="form-control">
-  <option></option>
-  <option>طرابلس</option>
-  <option>بنغازي</option>
-  <option>سبها</option>
-  <option>مصراته</option>
+    <div>
+      <label className="block text-lg mb-2">اسم الوكيل:</label>
+      <input className="form-control" type="text" />
+    </div>
 
-</select>
+    <div>
+      <label className="block text-lg mb-2">تاريخه:</label>
+      <input className="form-control" type="text" />
+    </div>
+
+    <div>
+      <label className="block text-lg mb-2">وصف البضائع:</label>
+      <input className="form-control" type="text" />
+    </div>
+  </div>
 </div>
-
-              </div>
 
 
 

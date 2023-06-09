@@ -41,6 +41,302 @@ function UsersManager() {
         </button>
       </td>
     </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td className="text-center">محمد</td>
+      <td className="text-center">ساسي</td>
+      <td className="text-center">zakria@gmail.com</td>
+      <td className="text-center">Superuser</td>
+      <td className="text-center">
+        <span className="badge bg-success">مفعل</span>
+      </td>
+      <td className="flex justify-center items-center">
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+          <FaTrash />
+        </button>
+        <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+          <FaEdit />
+        </button>
+        <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
+          <FaStopCircle />
+        </button>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 

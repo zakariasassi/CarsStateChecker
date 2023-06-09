@@ -39,7 +39,6 @@ function App() {
           <Route path='/jomrokrepostr' element={ <Layout view={<JomrokReports/> }  />} />
           <Route path='/signcarsreports' element={ <Layout view={<SinedReports/> }  />} />
 
-
         </Routes>
     </BrowserRouter> 
 
