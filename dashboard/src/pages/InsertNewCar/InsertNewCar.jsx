@@ -79,6 +79,12 @@ function InsertNewCar() {
       <label className="block text-lg mb-2">رقم المحرك:</label>
       <input className="form-control" type="text" />
     </div>
+
+    <button
+      className='bg-green-600 w-64  text-white p-2'
+    >
+      حفظ
+    </button>
   </div>
 </div>
 

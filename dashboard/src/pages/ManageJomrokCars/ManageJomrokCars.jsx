@@ -5,8 +5,8 @@
       return (
         <>
             <>
-         <Box style={{display:"flex" , flexDirection:"coulmn" , justifyContent:'center' , alignItems: "center" , padding: 20 , width:'100%' }}>
-           <div className='w-100' style={{  height:'100vh'}}>
+            <div className="flex flex-col  items-center p-5 w-full" >
+  <div className="w-full overflow-x-auto w-full">
       <table className="table m-5 p-lg-5" dir='rtl'>
   <thead >
     <tr   >
@@ -333,7 +333,7 @@
   </tbody>
 </table>
            </div>
-           </Box>
+           </div>
     </>
         </>
       )

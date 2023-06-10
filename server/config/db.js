@@ -1,5 +1,4 @@
 const {Sequelize} = require('sequelize')
-require('dotenv').config();
 
 // const dbname = process.env.DATABASE_NAME  ;
 // const dbpassword = process.env.DATABAS_PASSWORD;
@@ -12,8 +11,8 @@ require('dotenv').config();
 const dbname = "carsstate_db"
 const dbpassword = ""
 const dbhost =  "localhost"
-const dbport =  3066;
-const  dbuser = "root";
+const dbport =  3306;
+const dbuser = "root";
 
 
 

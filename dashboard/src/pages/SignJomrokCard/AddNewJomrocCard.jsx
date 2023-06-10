@@ -103,7 +103,14 @@ function AddNewJomrocCard() {
       <input className="form-control" type="text" />
     </div>
   </div>
+  <button
+      className='bg-green-600 w-64  text-white p-2'
+    >
+      حفظ
+    </button>
 </div>
+
+
 
 
 

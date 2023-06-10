@@ -31,30 +31,17 @@ function AddUser() {
                     htmlFor="firstName"
                     className="block text-gray-700 font-bold mt-10"
                   >
-                    🧑‍🦱 الاسم الأول
+                    🧑‍🦱 الاسم بالكامل 
                   </label>
                   <input
                     type="text"
                     id="firstName"
                     className="appearance-none border text-right border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:border-indigo-500"
-                    placeholder="ادخل الاسم الأول"
+                    placeholder="ادخل الاسم "
                   />
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-gray-700 font-bold mb-2"
-                  >
-                    🧔 الاسم الأخير
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="appearance-none border text-right border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:border-indigo-500"
-                    placeholder="ادخل الاسم الأخير"
-                  />
-                </div>
+
 
                 <div>
                   <label

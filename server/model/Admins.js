@@ -8,7 +8,7 @@ const admin =  db.define('admins' , {
         autoIncrement : true,
         primaryKey : true,
     },
-    name :{
+    username :{
         type : DataTypes.STRING,
         allowNull : false,
     },
@@ -19,8 +19,13 @@ const admin =  db.define('admins' , {
     password: {
         type : DataTypes.STRING,
         allowNull : false,
+        
     },
-
+fullname : {
+      type : DataTypes.STRING,
+        allowNull : false,
+        
+},
 
     role : {
         type : DataTypes.INTEGER,
@@ -49,7 +54,7 @@ const admin =  db.define('admins' , {
 });
 
 
-admin.sync().then(() => { console.log("Admins table sync successful")});
+admin.sync({alter : true}).then(() => { console.log("Admins table sync successful")});
 
 
 module.exports = admin;

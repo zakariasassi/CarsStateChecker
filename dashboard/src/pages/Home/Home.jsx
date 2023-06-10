@@ -2,107 +2,68 @@ import { Typography, CardContent, Card } from "@mui/material";
 import { Box } from "@mui/material";
 import styles from "./home-style";
 import index from "../../constent/index";
+import React from "react";
+
+
+
 function Home() {
+  const users = [
+    { id: 1, name: "محمد أحمد", role: "مدير", date: "2023-05-18" },
+    { id: 2, name: "أميرة خالد", role: "مستخدم", date: "2023-05-17" },
+    { id: 3, name: "عبدالله محمود", role: "مستخدم", date: "2023-05-16" },
+    // Add more users here
+  ];
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          flexDirection: "coulmn",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: 100,
-          width: "100%",
-        }}
-      >
-        <div className="w-100" style={{ height: "100vh" }}>
-          <div className="flex justify-center">
-            <div>
-              <div className="p-4 bg-white shadow-lg rounded-2xl w-40 m-10">
-                <div className="flex items-center">
-                  <span className="relative w-4 h-4 p-2 bg-green-500 rounded-full">
-                    <svg
-                      width="20"
-                      fill="currentColor"
-                      height="20"
-                      className="absolute h-2 text-white transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                      viewBox="0 0 1792 1792"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
-                    </svg>
-                  </span>
-                  <p className="ml-2 text-gray-700 text-md ">Sales</p>
-                </div>
-                <div className="flex flex-col justify-start">
-                  <p className="my-4 text-4xl font-bold text-left text-gray-800 ">
-                    36K
-                  </p>
-                  <div className="relative h-2 bg-gray-200 rounded w-28">
-                    <div className="absolute top-0 left-0 w-2/3 h-2 bg-green-500 rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+   <div className="bg-gradient-to-b from-green-900 to-green-500  w-full h-screen p-10" dir='rtl'>
+      <h1 className="text-4xl font-bold text-white mb-6">لوحة التحكم</h1>
 
-            <div>
-              <div className="p-4 bg-white shadow-lg rounded-2xl w-40 m-10">
-                <div className="flex items-center">
-                  <span className="relative w-4 h-4 p-2 bg-green-500 rounded-full">
-                    <svg
-                      width="20"
-                      fill="currentColor"
-                      height="20"
-                      className="absolute h-2 text-white transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                      viewBox="0 0 1792 1792"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
-                    </svg>
-                  </span>
-                  <p className="ml-2 text-gray-700 text-md ">Sales</p>
-                </div>
-                <div className="flex flex-col justify-start">
-                  <p className="my-4 text-4xl font-bold text-left text-gray-800 ">
-                    36K
-                  </p>
-                  <div className="relative h-2 bg-gray-200 rounded w-28">
-                    <div className="absolute top-0 left-0 w-2/3 h-2 bg-green-500 rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="p-4 bg-white shadow-lg rounded-2xl w-40 m-10">
-                <div className="flex items-center">
-                  <span className="relative w-4 h-4 p-2 bg-green-500 rounded-full">
-                    <svg
-                      width="20"
-                      fill="currentColor"
-                      height="20"
-                      className="absolute h-2 text-white transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
-                      viewBox="0 0 1792 1792"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M1362 1185q0 153-99.5 263.5t-258.5 136.5v175q0 14-9 23t-23 9h-135q-13 0-22.5-9.5t-9.5-22.5v-175q-66-9-127.5-31t-101.5-44.5-74-48-46.5-37.5-17.5-18q-17-21-2-41l103-135q7-10 23-12 15-2 24 9l2 2q113 99 243 125 37 8 74 8 81 0 142.5-43t61.5-122q0-28-15-53t-33.5-42-58.5-37.5-66-32-80-32.5q-39-16-61.5-25t-61.5-26.5-62.5-31-56.5-35.5-53.5-42.5-43.5-49-35.5-58-21-66.5-8.5-78q0-138 98-242t255-134v-180q0-13 9.5-22.5t22.5-9.5h135q14 0 23 9t9 23v176q57 6 110.5 23t87 33.5 63.5 37.5 39 29 15 14q17 18 5 38l-81 146q-8 15-23 16-14 3-27-7-3-3-14.5-12t-39-26.5-58.5-32-74.5-26-85.5-11.5q-95 0-155 43t-60 111q0 26 8.5 48t29.5 41.5 39.5 33 56 31 60.5 27 70 27.5q53 20 81 31.5t76 35 75.5 42.5 62 50 53 63.5 31.5 76.5 13 94z"></path>
-                    </svg>
-                  </span>
-                  <p className="ml-2 text-gray-700 text-md ">Sales</p>
-                </div>
-                <div className="flex flex-col justify-start">
-                  <p className="my-4 text-4xl font-bold text-left text-gray-800 ">
-                    36K
-                  </p>
-                  <div className="relative h-2 bg-gray-200 rounded w-28">
-                    <div className="absolute top-0 left-0 w-2/3 h-2 bg-green-500 rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Box>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <DashboardCard title="إجمالي المستخدمين" value={users.length} />
+        <DashboardCard title="إجمالي السيارات" value={users.length} />
+        <DashboardCard title="إجمالي سيارات الجمرك" value={users.length} />
+        <DashboardCard title="إجمالي التامينات" value={users.length} />
+        <DashboardCard title="إجمالي  " value={users.length} />
+        <DashboardCard title="إجمالي المستخدمين" value={users.length} />
+
+        {/* Add more dashboard cards here */}
+      </div>
+
+      <div className="mt-10">
+        <h2 className="text-2xl font-bold text-white mb-6">آخر 10 مستخدمين</h2>
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th className="py-2 px-4 text-white">الرقم</th>
+              <th className="py-2 px-4 text-white ">الاسم</th>
+              <th className="py-2 px-4 text-white ">الدور</th>
+              <th className="py-2 px-4 text-white ">تاريخ الإنشاء</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users.map((user) => (
+              <tr key={user.id}>
+                <td className="py-2 px-4 text-white  ">{user.id}</td>
+                <td className="py-2 px-4 text-white ">{user.name}</td>
+                <td className="py-2 px-4 text-white ">{user.role}</td>
+                <td className="py-2 px-4 text-white">{user.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
     </>
+  );
+}
+
+
+function DashboardCard({ title, value }) {
+  return (
+    <div className="bg-white rounded-lg p-6">
+      <h3 className="text-lg font-bold text-gray-800 mb-2">{title}</h3>
+      <p className="text-4xl font-bold text-green-500">{value}</p>
+    </div>
   );
 }
 
