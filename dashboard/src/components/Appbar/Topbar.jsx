@@ -33,14 +33,15 @@ export default function Topbar() {
 
 const handellogout = (event) => { 
   event.preventDefault()
-  console.log("object")
+  window.localStorage.clear();
   navigate('/login')
+  
 }
 
   return (
     <>
 
-      <AppBar sx={{ backgroundColor:'#2B2C42'}} >
+      <AppBar sx={{ backgroundColor:'#15582F'}} >
         <Toolbar>
 
  

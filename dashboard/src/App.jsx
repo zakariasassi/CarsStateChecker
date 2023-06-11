@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState  } from 'react'
 import Layout from './Layout/Layout';
 import Login from './pages/Login/Login';
 import { BrowserRouter, Routes , Route } from 'react-router-dom';
@@ -14,30 +14,39 @@ import JomrokReports from './pages/Reports/jomrokReports';
 import SinedReports from './pages/Reports/sinedReports';
 import Insurance from './pages/Insurance/Insurance';
 import Home from './pages/Home/Home';
+import { useEffect } from 'react';
 
 
 function App() {
+
+  const [login , setLogin] = useState(false)
+
+
+  useEffect(() => {
+    const login = window.localStorage.getItem('isLogin')
+    setLogin(login)
+  }, [])
 
   return (
     <>
 
    <BrowserRouter>
         <Routes>
-          <Route exact path='/' element={<Layout view={<Home/>} />} />
+          <Route exact path='/' element={login ?  <Layout view={<Home/>}  /> : <Login />    }   />
           <Route path='/home' element={<Layout view={<Home/>} />}/>
-          <Route path='/login' element={<Login/>} />
+          <Route path='/login' element={ login ? <Layout view={<Home/>} /> : <Login/>} />
 
-          <Route path='/users' element={<Layout view={<UsersManager/>} />} />
-          <Route path='/newuser' element={<Layout view={<AddUser/> } />} />
-          <Route path='/roles' element={ <Layout view={<UsersRoles/> } /> } />
-          <Route path='/newcar' element={ <Layout view={<InsertNewCar/> } /> } />
-          <Route path='/showcars' element={ <Layout view={<SInedCars /> } /> } />
-          <Route path='/newjomrok' element={   <Layout view={<AddNewJomrocCard/> } />  } />
-          <Route path='/showjomrok' element={  <Layout view={<ManageJomrokCars/>  }  /> } />
-          <Route path='/insurance' element={  <Layout view={<Insurance /> }  />  } />
-          <Route path='/insurancereports' element={  <Layout view={<InsuranceReports/> }  />  } />
-          <Route path='/jomrokrepostr' element={ <Layout view={<JomrokReports/> }  />} />
-          <Route path='/signcarsreports' element={ <Layout view={<SinedReports/> }  />} />
+          <Route path='/users' element={ login ?  <Layout view={<UsersManager/>} /> : <Login />   } />
+          <Route path='/newuser' element={ login ?  <Layout view={<AddUser/> } /> : <Login />   } />
+          <Route path='/roles' element={ login ?  <Layout view={<UsersRoles/> } />  : <Login />   } />
+          <Route path='/newcar' element={ login ?   <Layout view={<InsertNewCar/> } /> : <Login />    } />
+          <Route path='/showcars' element={ login ?   <Layout view={<SInedCars /> } />  : <Login />   } />
+          <Route path='/newjomrok' element={  login ?    <Layout view={<AddNewJomrocCard/> } /> : <Login />     } />
+          <Route path='/showjomrok' element={  login ?  <Layout view={<ManageJomrokCars/>  }  />  : <Login />   } />
+          <Route path='/insurance' element={  login ?   <Layout view={<Insurance /> }  />   : <Login />   } />
+          <Route path='/insurancereports' element={  login ?   <Layout view={<InsuranceReports/> }  />   : <Login />   } />
+          <Route path='/jomrokrepostr' element={ login ?   <Layout view={<JomrokReports/> }  />  : <Login />   } />
+          <Route path='/signcarsreports' element={ login ?   <Layout view={<SinedReports/> }  /> : <Login />   } />
 
         </Routes>
     </BrowserRouter> 

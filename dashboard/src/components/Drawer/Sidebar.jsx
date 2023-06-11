@@ -7,19 +7,20 @@ import { Box, Divider } from "@mui/material";
 import { Link } from "react-router-dom";
 import { FaUsers, FaUser, FaCar, FaFileAlt, FaCogs } from "react-icons/fa";
 export default function Sidebar() {
+  const user = JSON.parse(window.localStorage.getItem('user'));
   return (
     <>
          <div className="bg-gradient-to-b from-green-900 to-green-500 h-full w-1/5 flex flex-col" dir='rtl'>
       <div className="mt-10 flex flex-col items-center mb-10">
-        <img className="w-20" src="https://cdn-icons-png.flaticon.com/512/219/219969.png" alt="Logo" />
-        <span className="mt-4 text-2xl text-white">Hanan Zurti</span>
+        <img className="w-20" src="https://icon-library.com/images/user-image-icon/user-image-icon-18.jpg" alt="Logo" />
+        <span className="mt-4 text-2xl text-white">{user.fullname}</span>
       </div>
 
       <div className="flex flex-col space-y-2">
       <SidebarLink to="/home" icon={<FaUsers />} label="الرئيسية" />
+      <SidebarLink to="/users" icon={<FaUsers />} label="ادارة المدراء" />
+      <SidebarLink to="/newuser" icon={<FaUser />} label="اضافة مدير نظام" />
         <SidebarLink to="/users" icon={<FaUsers />} label="ادارة المستخدمين" />
-        <SidebarLink to="/newuser" icon={<FaUser />} label="اضافة مستخدم" />
-        <SidebarLink to="/roles" icon={<FaCogs />} label="الصلاحيات" />
         <SidebarLink to="/newcar" icon={<FaCar />} label="تسجيل مركبة" />
         <SidebarLink to="/showcars" icon={<FaCar />} label="المركبات المسجلة" />
         <SidebarLink to="/newjomrok" icon={<FaCar />} label="تسجيل مركبة جمركية" />
