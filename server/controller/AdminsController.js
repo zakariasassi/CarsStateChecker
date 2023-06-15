@@ -104,3 +104,26 @@ exports.createnewadmin = async (req, res) => {
       });
     }
   };
+
+
+
+
+
+  exports.getalladmins = async ( req , res , next ) => {
+
+    try {
+      await Admins.findAll().then( data => {
+        if(data) {
+          res.json({
+            state: 1,
+            data: data
+          });
+        }
+      }).catch((error) => {
+        console.log(error)
+      })
+    } catch (error) {
+        console.log(error)
+    }
+
+   }

@@ -1,8 +1,69 @@
-import React from 'react'
+import React , {useState} from 'react'
 import { FaCar, FaCalendarAlt, FaIdCard, FaUser, FaPhone, FaEnvelope, FaLocationArrow, FaCheckCircle } from 'react-icons/fa';
 import { Box } from '@mui/material';
-
+import axios from 'axios'
+import { url } from '../../constent/url';
 function Insurance() {
+
+
+  const [companyName, setCompanyName] = useState('');
+  const [insuranceType, setInsuranceType] = useState('');
+  const [documentNumber, setDocumentNumber] = useState('');
+  const [issuingBranch, setIssuingBranch] = useState('');
+  const [insuranceStartDate, setInsuranceStartDate] = useState('');
+  const [insuranceEndDate, setInsuranceEndDate] = useState('');
+  const [customerNumber, setCustomerNumber] = useState('');
+  const [insuredName, setInsuredName] = useState('');
+  const [insuredAddress, setInsuredAddress] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log("zakaria")
+    const formData = {
+      companyName,
+      insuranceType,
+      documentNumber,
+      issuingBranch,
+      insuranceStartDate,
+      insuranceEndDate,
+      customerNumber,
+      insuredName,
+      insuredAddress,
+    };
+
+    try {
+      const response = await axios.post( url +  '/createInsuranceDocument', formData).then(res => {
+            if(res.data.success === true ){
+              // setCompanyName('');
+              // setInsuranceType('');
+              // setDocumentNumber('');
+              // setIssuingBranch('');
+              // setInsuranceStartDate('');
+              // setInsuranceEndDate('');
+              // setCustomerNumber('');
+              // setInsuredName('');
+              // setInsuredAddress('');
+            }else{
+              // setCompanyName('');
+              // setInsuranceType('');
+              // setDocumentNumber('');
+              // setIssuingBranch('');
+              // setInsuranceStartDate('');
+              // setInsuranceEndDate('');
+              // setCustomerNumber('');
+              // setInsuredName('');
+              // setInsuredAddress('');
+            }
+      })
+      // Reset the form after successful submission
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+
+
   return (
    
 
@@ -20,52 +81,52 @@ function Insurance() {
     <div className="grid grid-cols-2 gap-4 mb-4">
       <div>
         <label className="block text-lg mb-2">اسم الشركة:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setCompanyName(e.target.value) }  className="form-control" type="text" />
       </div>
 
       <div>
         <label className="block text-lg mb-2">نوع التأمين:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setInsuranceType(e.target.value) }   className="form-control" type="text" />
       </div>
 
       <div>
         <label className="block text-lg mb-2">رقم الوثيقة:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setDocumentNumber(e.target.value) }   className="form-control" type="text" />
       </div>
 
       <div>
         <label className="block text-lg mb-2">اسم الفرع أو المكتب الذي أصدر الوثيقة:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setIssuingBranch(e.target.value) }  className="form-control" type="text" />
       </div>
       <div>
         <label className="block text-lg mb-2">مدة التأمين من ظهر يوم:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setInsuranceStartDate(e.target.value) }  className="form-control" type="date" />
       </div>
       <div>
         <label className="block text-lg mb-2">الى ظهر يوم:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setInsuranceEndDate(e.target.value) }  className="form-control" type="date" />
       </div>
 
       <div>
         <label className="block text-lg mb-2">رقم الزبون:</label>
-        <input className="form-control" type="text" />
+        <input  onChange={e =>  setCustomerNumber(e.target.value) }   className="form-control" type="text" />
       </div>
 
 
 
       <div>
         <label className="block text-lg mb-2">اسم المؤمن له:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setInsuredName(e.target.value) }  className="form-control" type="text" />
       </div>
 
       <div>
         <label className="block text-lg mb-2">عنوان المؤمن له:</label>
-        <input className="form-control" type="text" />
+        <input onChange={e =>  setInsuredAddress(e.target.value) }  className="form-control" type="text" />
       </div>
     </div>
 
     <div className="text-right">
-      <button className="btn btn-primary w-full">حفظ</button>
+      <button onClick={(e) => {handleSubmit(e)}} className="btn hover:bg-green-900 text-white  bg-green-500 w-full">حفظ</button>
     </div>
   </form>
 </div>
