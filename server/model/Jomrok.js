@@ -70,6 +70,12 @@ const jomrok = db.define('jomrok', {
   goods_description: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  createdAt: {
+      type : DataTypes.DATEONLY
+  },
+  updatedAt: {
+      type : DataTypes.DATEONLY
   }
 }, {
 tableName: 'jomrok',

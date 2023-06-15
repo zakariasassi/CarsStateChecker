@@ -43,6 +43,12 @@ const InsuranceDocument = db.define('InsuranceDocument', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  createdAt: {
+      type : DataTypes.DATEONLY
+  },
+  updatedAt: {
+      type : DataTypes.DATEONLY
+  }
 }, {
     tableName : 'InsuranceDocument',
     freezeTableName : true, //

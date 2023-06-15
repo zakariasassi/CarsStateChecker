@@ -47,10 +47,18 @@ fullname : {
         type : DataTypes.DATEONLY,
         allowNull: true,
     },
+    createdAt: {
+        type : DataTypes.DATEONLY
+    },
+    updatedAt: {
+        type : DataTypes.DATEONLY
+    }
+    
+    
 },{
     freezeTableName : true,
     tableName : 'admins',
-    timestamps :false,
+    timestamps :true,
 });
 
 

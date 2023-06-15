@@ -24,7 +24,7 @@ function InsertNewCar() {
     try {
       const response = await axios.post( url +  '/createLicenceDepartment', {
         bord_number: bordNumber,
-        country,
+        country : country,
         year_made: yearMade,
         body_number: bodyNumber,
         engine_power: enginePower,

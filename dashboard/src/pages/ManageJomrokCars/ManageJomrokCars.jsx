@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box } from '@mui/material';
+import { url } from '../../constent/url';
 
 function ManageJomrokCars() {
   const [carsData, setCarsData] = useState([]);
 
   useEffect(() => {
     // Fetch data from the server
-    axios.get('/getAllJomrok')
+    axios.get( url +  '/getAllJomrok')
       .then(response => {
         setCarsData(response.data);
       })

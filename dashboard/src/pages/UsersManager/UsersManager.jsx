@@ -44,7 +44,7 @@ const activeadmin = async (e , id) => {
               <tr>
                 <th scope="col">#</th>
                 <th scope="col" className="text-center">الاسم</th>
-                <th scope="col" className="text-center">اللقب</th>
+                <th scope="col" className="text-center">اسم المستخدم</th>
                 <th scope="col" className="text-center">البريد الإلكتروني</th>
                 <th scope="col" className="text-center">الصلاحية</th>
                 <th scope="col" className="text-center">الحالة</th>

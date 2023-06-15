@@ -60,6 +60,12 @@ const licnencesdepartment =  db.define('licnencesdepartment' , {
     engine_number : {
         type : DataTypes.INTEGER,
         allowNull: false
+    },
+    createdAt: {
+        type : DataTypes.DATEONLY
+    },
+    updatedAt: {
+        type : DataTypes.DATEONLY
     }
 
 },{

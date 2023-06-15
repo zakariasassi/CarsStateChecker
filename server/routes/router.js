@@ -6,6 +6,7 @@ const Admins = require('../controller/AdminsController')
 const licnencesdepartmentController = require('../controller/LicenceDepartmentController')
 const jomrokController = require('../controller/JomrekDepartmentController')
 const insuranceDocumentController = require('../controller/IncuranceDepartmentController')
+const Reports = require('../controller/ReportsController')
 
 
 
@@ -79,6 +80,11 @@ router.put('/updateInsuranceDocument/:id', insuranceDocumentController.updateIns
 // Delete an insurance document by ID
 router.delete('/deleteInsuranceDocument/:id', insuranceDocumentController.deleteInsuranceDocument);
 
+
+
+
+
+router.post('/SingedgenerateReport' , Reports.SingedgenerateReport)
 
 
 
