@@ -13,9 +13,10 @@ const insuranceDocumentController = require('../controller/IncuranceDepartmentCo
 router.post('/addadmin' ,  Admins.createnewadmin)
 router.post('/loginadmin' ,  Admins.loginadmin)
 
+router.get('/getAllAdmins' , Admins.getalladmins)
 
-
-
+router.put('/restrictadmin/:id' , Admins.restrictadmin)
+router.put('/activeadmin/:id' , Admins.activeadmin)
 
 
 

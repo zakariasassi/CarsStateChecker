@@ -127,3 +127,35 @@ exports.createnewadmin = async (req, res) => {
     }
 
    }
+
+   
+
+   exports.activeadmin = async ( req , res , next ) => {
+    const {id} = req.params
+
+    await Admins.update({
+      state: 1,
+    },
+    {
+      where : {
+        id: id,
+      }
+    }
+
+    )
+   }
+
+   exports.restrictadmin = async ( req , res , next ) => {
+    const {id} = req.params
+
+    await Admins.update({
+      state: 0,
+    },
+    {
+      where : {
+        id: id,
+      }
+    }
+
+    )
+   }
