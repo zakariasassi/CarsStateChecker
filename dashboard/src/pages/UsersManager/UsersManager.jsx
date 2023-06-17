@@ -7,32 +7,40 @@ import { url } from '../../constent/url';
 function UsersManager() {
   const [adminsData, setAdminsData] = useState([]);
 
+  const getalladmins =  async () => {
+    await axios.get(url +'/getAllAdmins')
+    .then(response => {
+      setAdminsData(response.data.data);
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+    });
+  } 
+
 
 const restrictadmin = async (e , id) => {
   e.preventDefault();
   await  axios.put( url + `/restrictadmin/${id}`).then((response) => {
     console.log(response)
+  
    })
+   getalladmins()
 }
 
 const activeadmin = async (e , id) => {
   e.preventDefault();
   await  axios.put( url + `/activeadmin/${id}`).then((response) => {
     console.log(response)
+   
    })
+   getalladmins()
 }
 
 
 
   useEffect(() => {
     // Fetch data from the server
-    axios.get(url +'/getAllAdmins')
-      .then(response => {
-        setAdminsData(response.data.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    getalladmins();
   }, []);
 
   return (
@@ -60,7 +68,7 @@ const activeadmin = async (e , id) => {
                   <td className="text-center">{admin.email}</td>
                   <td className="text-center">Superuser</td>
                   <td className="text-center">
-                    <span className="badge bg-success">مفعل</span>
+                    <span className="badge bg-success">{admin.state ?  "مفعل" : "غير مفعل"}</span>
                   </td>
                   <td className="flex justify-center items-center">
                     <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">

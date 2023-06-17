@@ -107,8 +107,6 @@ exports.createnewadmin = async (req, res) => {
 
 
 
-
-
   exports.getalladmins = async ( req , res , next ) => {
 
     try {
@@ -145,6 +143,8 @@ exports.createnewadmin = async (req, res) => {
     )
    }
 
+
+   
    exports.restrictadmin = async ( req , res , next ) => {
     const {id} = req.params
 

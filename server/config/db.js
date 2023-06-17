@@ -20,7 +20,7 @@ const db = new Sequelize( dbname, dbuser, dbpassword , {
     host:dbhost,
     dialect: 'mysql',
     port:dbport,
-    
+  
 pool: {
     max: 5,
     min: 0,

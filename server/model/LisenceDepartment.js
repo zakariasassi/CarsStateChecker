@@ -56,7 +56,6 @@ const licnencesdepartment =  db.define('licnencesdepartment' , {
         type : DataTypes.STRING,
         allowNull: false
     },
-
     engine_number : {
         type : DataTypes.INTEGER,
         allowNull: false
