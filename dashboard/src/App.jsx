@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect , useContext } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
 import Login from './pages/Login/Login';
@@ -14,16 +14,17 @@ import JomrokReports from './pages/Reports/jomrokReports';
 import SinedReports from './pages/Reports/sinedReports';
 import Insurance from './pages/Insurance/Insurance';
 import Home from './pages/Home/Home';
+import { AuthContext } from './context/AuthContext';
 
 function App() {
-  const [login, setLogin] = useState(false);
 
-  useEffect(() => {
-    const isLoggedIn = window.localStorage.getItem('isLogin');
-    setLogin(!!isLoggedIn);
-  }, []);
+  const [login , setLogin] = useState(false)
+
+
+
 
   return (
+    <AuthContext.Provider value={{login , setLogin}}>
     <BrowserRouter>
       <Routes>
         <Route
@@ -31,7 +32,7 @@ function App() {
           path="/"
           element={login ? <Layout view={<Home />} /> : <Login />}
         />
-        <Route path="/home" element={<Layout view={<Home />} />} />
+        <Route path="/home" element={ login ?  <Layout view={<Home />} /> : <Login />} />
         <Route
           path="/login"
           element={login ? <Layout view={<Home />} /> : <Login />}
@@ -82,6 +83,8 @@ function App() {
         />
       </Routes>
     </BrowserRouter>
+    </AuthContext.Provider>
+
   );
 }
 

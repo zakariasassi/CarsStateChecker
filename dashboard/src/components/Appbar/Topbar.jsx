@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React , {useContext , useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -14,10 +14,14 @@ import Menu from '@mui/material/Menu';
 
 
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 
 export default function Topbar() {
-  const [auth, setAuth] = React.useState(true);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const {setLogin} = useContext(AuthContext)
+
+  const [auth, setAuth] = useState(true);
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate()
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -34,7 +38,9 @@ export default function Topbar() {
 const handellogout = (event) => { 
   event.preventDefault()
   window.localStorage.clear();
+  setLogin(false)
   navigate('/login')
+  
   
 }
 

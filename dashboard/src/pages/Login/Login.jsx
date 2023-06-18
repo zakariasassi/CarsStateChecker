@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState , useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { FiUser, FiLock } from "react-icons/fi";
@@ -6,8 +6,12 @@ import toast, { Toaster } from "react-hot-toast";
 
 import axios from "axios";
 import { url } from "../../constent/url";
+import { AuthContext } from "../../context/AuthContext";
 
 function Login() {
+
+  const {setLogin} = useContext(AuthContext)
+
   const navigate = useNavigate();
   const notify = (msg) => toast(msg);
   const [username, setUsername] = useState("");
@@ -26,6 +30,7 @@ function Login() {
           window.localStorage.setItem('user' , JSON.stringify(res.data.user))
           window.localStorage.setItem('isLogin' , true)
           navigate("/home");
+          setLogin(true)
         } else {
           notify(res.data.message);
         }

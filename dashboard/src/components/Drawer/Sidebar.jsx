@@ -13,7 +13,7 @@ export default function Sidebar() {
          <div className="bg-gradient-to-b from-green-900 to-green-500 h-full w-1/5 flex flex-col" dir='rtl'>
       <div className="mt-10 flex flex-col items-center mb-10">
         <img className="w-20" src="https://icon-library.com/images/user-image-icon/user-image-icon-18.jpg" alt="Logo" />
-        <span className="mt-4 text-2xl text-white">{user.fullname}</span>
+        <span className="mt-4 text-2xl text-white">{user?.fullname}</span>
       </div>
 
       <div className="flex flex-col space-y-2">
