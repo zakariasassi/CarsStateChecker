@@ -17,7 +17,7 @@ function Home() {
   ];
   return (
     <>
-   <div className="bg-gradient-to-b from-green-900 to-green-500  w-full h-screen p-10" dir='rtl'>
+   <div className="bg-gradient-to-b from-green-900 to-green-500  w-full h-full p-10" dir='rtl' style={{height:'auto'}}>
       <h1 className="text-4xl font-bold text-white mb-6">لوحة التحكم</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
