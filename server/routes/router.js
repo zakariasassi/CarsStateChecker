@@ -15,7 +15,7 @@ router.post('/addadmin' ,  Admins.createnewadmin)
 router.post('/loginadmin' ,  Admins.loginadmin)
 
 router.get('/getAllAdmins' , Admins.getalladmins)
-
+router.delete('/deleteadmin/:id' , Admins.deleteadmin )
 router.put('/restrictadmin/:id' , Admins.restrictadmin)
 router.put('/activeadmin/:id' , Admins.activeadmin)
 
@@ -28,13 +28,13 @@ router.post('/createLicenceDepartment', licnencesdepartmentController.createLice
 router.get('/getLicenceDepartments', licnencesdepartmentController.getLicenceDepartments);
 
 // Retrieve a specific record by ID
-router.get('getLicenceDepartmentById/:id', licnencesdepartmentController.getLicenceDepartmentById);
+router.get('/getLicenceDepartmentById/:id', licnencesdepartmentController.getLicenceDepartmentById);
 
 // Update a record
-router.put('updateLicenceDepartment/:id', licnencesdepartmentController.updateLicenceDepartment);
+router.put('/updateLicenceDepartment/:id', licnencesdepartmentController.updateLicenceDepartment);
 
 // Delete a record
-router.delete('deleteLicenceDepartment/:id', licnencesdepartmentController.deleteLicenceDepartment);
+router.delete('/deleteLicenceDepartment/:id', licnencesdepartmentController.deleteLicenceDepartment);
 
 
 

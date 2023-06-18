@@ -8,8 +8,7 @@ function UsersManager() {
   const [adminsData, setAdminsData] = useState([]);
 
   const getalladmins =  async () => {
-    await axios.get(url +'/getAllAdmins')
-    .then(response => {
+    await axios.get(url +'/getAllAdmins').then(response => {
       setAdminsData(response.data.data);
     })
     .catch(error => {
@@ -17,6 +16,14 @@ function UsersManager() {
     });
   } 
 
+  const deleteadmin = async ( e , id) => {
+    e.preventDefault();
+    await  axios.delete( url + `/deleteadmin/${id}`).then((response) => {
+      console.log(response)
+    
+     })
+     getalladmins()
+  }
 
 const restrictadmin = async (e , id) => {
   e.preventDefault();
@@ -25,7 +32,7 @@ const restrictadmin = async (e , id) => {
   
    })
    getalladmins()
-}
+  }
 
 const activeadmin = async (e , id) => {
   e.preventDefault();
@@ -71,7 +78,7 @@ const activeadmin = async (e , id) => {
                     <span className="badge bg-success">{admin.state ?  "مفعل" : "غير مفعل"}</span>
                   </td>
                   <td className="flex justify-center items-center">
-                    <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+                    <button onClick={(e) => {deleteadmin(e , admin.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                       <FaTrash />
                     </button>
                     <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">

@@ -140,7 +140,14 @@ exports.createnewadmin = async (req, res) => {
       }
     }
 
-    )
+    ).then(() => {
+      res.json({
+        message: 'Admin Activited',
+        state:1
+      })
+    }).catch( err => {
+      console.log(err)
+    })
    }
 
 
@@ -157,5 +164,30 @@ exports.createnewadmin = async (req, res) => {
       }
     }
 
-    )
+    ).then(() => {
+      res.json({
+        message: 'Admin Restricted',
+        state:1
+      })
+    }).catch( err => {
+      console.log(err)
+    })
+   }
+
+
+
+   exports.deleteadmin = async ( req , res ) => {
+
+    await Admins.destroy({
+      where : {
+        id : req.params.id,
+      }
+    }).then(() => {
+      res.json({
+        message  : 'Admin deleted',
+        state : 1,
+      })
+    }).catch(err => {
+      console.log(err)
+    })
    }

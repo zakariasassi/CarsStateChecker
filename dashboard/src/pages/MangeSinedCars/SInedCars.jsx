@@ -5,15 +5,27 @@ import axios from 'axios';
 function SInedCars() {
   const [carsData, setCarsData] = useState([]);
 
-  useEffect(() => {
-    // Fetch data from the server
-    axios.get( url + '/getLicenceDepartments')
-      .then(response => {
-        setCarsData(response.data);
+  const getdata  = async () => {
+    
+    await  axios.get( url + '/getLicenceDepartments')
+        .then(response => {
+          setCarsData(response.data);
+        })
+        .catch(error => {
+          console.error('Error fetching data:', error);
+        });
+  }
+
+
+  const deletecarsData = async (e , id) => {
+    e.preventDefault();
+      await axios.delete( url + `/deleteLicenceDepartment/${id}`).then((res) => {
+        console.log(res)
+        getdata()
       })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+  }
+  useEffect(() => {
+    getdata()
   }, []);
 
   return (
@@ -55,7 +67,7 @@ function SInedCars() {
                 <td style={{ textAlign: 'center' }}>{car.car_color}</td>
                 <td style={{ textAlign: 'center' }}>{car.engine_number}</td>
                 <td style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+                  <button onClick={(e) => {deletecarsData(e , car.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                     <i className="fa fa-trash"></i>
                   </button>
                   <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">

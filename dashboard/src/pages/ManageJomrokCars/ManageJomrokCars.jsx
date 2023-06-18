@@ -6,15 +6,34 @@ import { url } from '../../constent/url';
 function ManageJomrokCars() {
   const [carsData, setCarsData] = useState([]);
 
+
+const getdata = async () => {
+  await axios.get( url +  '/getAllJomrok')
+  .then(response => {
+    setCarsData(response.data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+}
+
+
+
+
+  const deleteJomrok = async (e , id ) => {
+    console.log(id)
+    e.preventDefault();
+    await axios.delete( url + `/deleteJomrok/${id}`).then((res) => {
+        console.log(res)
+    })
+    getdata();
+  }
+ 
+
   useEffect(() => {
     // Fetch data from the server
-    axios.get( url +  '/getAllJomrok')
-      .then(response => {
-        setCarsData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    getdata()
+
   }, []);
 
   return (
@@ -64,7 +83,7 @@ function ManageJomrokCars() {
                 <td style={{ textAlign: 'center' }}>{car.date}</td>
                 <td style={{ textAlign: 'center' }}>{car.goods_description}</td>
                 <td style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                  <button type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
+                  <button onClick={ (e) => {deleteJomrok(e , car.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                     <i className="fa-sharp fa-solid fa-trash"></i>
                   </button>
                   <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
