@@ -15,6 +15,8 @@ import SinedReports from './pages/Reports/sinedReports';
 import Insurance from './pages/Insurance/Insurance';
 import Home from './pages/Home/Home';
 import { AuthContext } from './context/AuthContext';
+import Employees from './pages/Employes/Employees';
+import AddEmploy from './pages/AddEmploye/AddEmploy';
 
 function App() {
 
@@ -38,8 +40,16 @@ function App() {
           element={login ? <Layout view={<Home />} /> : <Login />}
         />
         <Route
-          path="/users"
+          path="/admins"
           element={login ? <Layout view={<UsersManager />} /> : <Login />}
+        />
+                <Route
+          path="/addem"
+          element={login ? <Layout view={<AddEmploy />} /> : <Login />}
+        />
+          <Route
+          path="/users"
+          element={login ? <Layout view={<Employees />} /> : <Login />}
         />
         <Route
           path="/newuser"

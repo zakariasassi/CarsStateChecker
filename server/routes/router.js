@@ -7,6 +7,7 @@ const licnencesdepartmentController = require('../controller/LicenceDepartmentCo
 const jomrokController = require('../controller/JomrekDepartmentController')
 const insuranceDocumentController = require('../controller/IncuranceDepartmentController')
 const Reports = require('../controller/ReportsController')
+const Employes = require('../controller/EmployesController')
 
 
 
@@ -35,6 +36,30 @@ router.put('/updateLicenceDepartment/:id', licnencesdepartmentController.updateL
 
 // Delete a record
 router.delete('/deleteLicenceDepartment/:id', licnencesdepartmentController.deleteLicenceDepartment);
+
+
+
+
+
+
+// Create a new record
+router.post('/createnewemploy', Employes.createnewemploy);
+
+// Retrieve all records
+router.get('/getallemployes', Employes.getallemployes);
+
+// Retrieve a specific record by ID
+router.get('/getallemployesById/:id', Employes.getallemployesById);
+
+// Update a record
+router.put('/updateEmploy/:id', Employes.updateEmploy);
+
+// Delete a record
+router.delete('/deleteEmploy/:id', Employes.deleteEmploy);
+router.put('/restrictEmploy/:id' , Employes.restrictEmploy)
+router.put('/activeEmploy/:id' , Employes.activeEmploy)
+
+
 
 
 

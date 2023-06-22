@@ -18,9 +18,10 @@ export default function Sidebar() {
 
       <div className="flex flex-col space-y-2">
       <SidebarLink to="/home" icon={<FaUsers />} label="الرئيسية" />
-      <SidebarLink to="/users" icon={<FaUsers />} label="ادارة المدراء" />
+      <SidebarLink to="/admins" icon={<FaUsers />} label="مستخدمين النظام" />
       <SidebarLink to="/newuser" icon={<FaUser />} label="اضافة مدير نظام" />
         <SidebarLink to="/users" icon={<FaUsers />} label="ادارة المستخدمين" />
+        <SidebarLink to="/addem" icon={<FaUsers />} label="اضافة موظف" />
         <SidebarLink to="/newcar" icon={<FaCar />} label="تسجيل مركبة" />
         <SidebarLink to="/showcars" icon={<FaCar />} label="المركبات المسجلة" />
         <SidebarLink to="/newjomrok" icon={<FaCar />} label="تسجيل مركبة جمركية" />
@@ -29,6 +30,9 @@ export default function Sidebar() {
         <SidebarLink to="/signcarsreports" icon={<FaFileAlt />} label="تقارير التراخيص" />
         <SidebarLink to="/jomrokrepostr" icon={<FaFileAlt />} label="تقارير الجمارك" />
         <SidebarLink to="/insurancereports" icon={<FaFileAlt />} label="تقارير التأمين" />
+
+
+        
       </div>
     </div>
     </>
