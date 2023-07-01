@@ -1,5 +1,5 @@
 const InsuranceDocument = require('../model/Incurances');
-
+const { Op } = require('sequelize');
 // Create a new insurance document
 exports.createInsuranceDocument = async (req, res) => {
   try {
@@ -68,3 +68,26 @@ exports.deleteInsuranceDocument = async (req, res) => {
     res.status(500).json({ success: false, error: 'Failed to delete insurance document' });
   }
 };
+
+
+
+
+
+
+
+
+exports.fetchincurance = async (req , res ) => {
+      const {boardnumber , bodynumber  } = req.params
+      const searchCriteria = {};
+      searchCriteria.bord_number = boardnumber ;
+      searchCriteria.body_number = bodynumber ;
+
+
+      await InsuranceDocument.findAll({
+        where: {
+          title: {
+            [Op.like]: `%${req.params}%`, // This will match titles containing the 'query' string
+          },
+        },
+      })
+}

@@ -29,7 +29,6 @@ exports.createnewemploy = async (req , res) => {
 
 
 exports.getallemployes = async (req , res ) => {
-
     await Employes.findAll().then((data)  => {
         res.json(
             {
@@ -125,3 +124,14 @@ exports.activeEmploy = async ( req , res , next ) => {
     })
    }
 
+
+
+
+
+
+
+   exports.loginemployee = async (req , res) => {
+    res.status(200).json({
+      msg : "sfasasf"
+    })
+   }

@@ -109,6 +109,28 @@ router.delete('/deleteInsuranceDocument/:id', insuranceDocumentController.delete
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+router.post('/loginemployee' ,Employes.loginemployee )
+
+
+
 router.post('/SingedgenerateReport' , Reports.SingedgenerateReport)
 
 
