@@ -126,13 +126,21 @@ function InsertNewCar() {
       <input onChange={e => setEngineNumber(e.target.value)}   className="form-control" type="text" />
     </div>
 
-    <button
+    <div className="mb-4">
+      <label className="block text-lg mb-2">رقم اللوحة:</label>
+      <input onChange={e => setEngineNumber(e.target.value)}   className="form-control" type="text" />
+    </div>
+
+  </div>
+
+
+
+  <button
       onClick={ (e) => {handleSubmit(e)}}
       className='bg-green-600 w-64  text-white p-2'
     >
       حفظ
     </button>
-  </div>
 </div>
 
 

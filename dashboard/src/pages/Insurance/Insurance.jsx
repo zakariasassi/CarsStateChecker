@@ -78,57 +78,71 @@ function Insurance() {
   <h2 className="text-2xl font-bold mb-4">بيانات التأمين</h2>
 
   <form className="w-100">
+
     <div className="grid grid-cols-2 gap-4 mb-4">
+
       <div>
         <label className="block text-lg mb-2">اسم الشركة:</label>
-        <input onChange={e =>  setCompanyName(e.target.value) }  className="form-control" type="text" />
+        <input onChange={e =>  setCompanyName(e.target.value) }  className="form-control" type="text"  required />
       </div>
 
       <div>
         <label className="block text-lg mb-2">نوع التأمين:</label>
-        <input onChange={e =>  setInsuranceType(e.target.value) }   className="form-control" type="text" />
+        <input onChange={e =>  setInsuranceType(e.target.value) }   className="form-control" type="text" required  />
       </div>
 
       <div>
         <label className="block text-lg mb-2">رقم الوثيقة:</label>
-        <input onChange={e =>  setDocumentNumber(e.target.value) }   className="form-control" type="text" />
+        <input onChange={e =>  setDocumentNumber(e.target.value) }   className="form-control" type="text" required  />
       </div>
 
       <div>
         <label className="block text-lg mb-2">اسم الفرع أو المكتب الذي أصدر الوثيقة:</label>
-        <input onChange={e =>  setIssuingBranch(e.target.value) }  className="form-control" type="text" />
+        <input onChange={e =>  setIssuingBranch(e.target.value) }  className="form-control" type="text" required />
       </div>
+
       <div>
         <label className="block text-lg mb-2">مدة التأمين من ظهر يوم:</label>
-        <input onChange={e =>  setInsuranceStartDate(e.target.value) }  className="form-control" type="date" />
+        <input onChange={e =>  setInsuranceStartDate(e.target.value) }  className="form-control" type="date" required />
       </div>
+
       <div>
         <label className="block text-lg mb-2">الى ظهر يوم:</label>
-        <input onChange={e =>  setInsuranceEndDate(e.target.value) }  className="form-control" type="date" />
+        <input onChange={e =>  setInsuranceEndDate(e.target.value) }  className="form-control" type="date" required  />
       </div>
 
       <div>
         <label className="block text-lg mb-2">رقم الزبون:</label>
-        <input  onChange={e =>  setCustomerNumber(e.target.value) }   className="form-control" type="text" />
+        <input  onChange={e =>  setCustomerNumber(e.target.value) }   className="form-control" type="text" required />
       </div>
-
-
 
       <div>
         <label className="block text-lg mb-2">اسم المؤمن له:</label>
-        <input onChange={e =>  setInsuredName(e.target.value) }  className="form-control" type="text" />
+        <input onChange={e =>  setInsuredName(e.target.value) }  className="form-control" type="text" required />
       </div>
 
       <div>
         <label className="block text-lg mb-2">عنوان المؤمن له:</label>
-        <input onChange={e =>  setInsuredAddress(e.target.value) }  className="form-control" type="text" />
+        <input onChange={e =>  setInsuredAddress(e.target.value) }  className="form-control" type="text" required />
       </div>
+
+      <div>
+        <label className="block text-lg mb-2"> رقم اللوحة</label>
+        <input onChange={e =>  setInsuredAddress(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
     </div>
+
 
     <div className="text-right">
       <button onClick={(e) => {handleSubmit(e)}} className="btn hover:bg-green-900 text-white  bg-green-500 w-full">حفظ</button>
     </div>
+
+
   </form>
+
+
+
 </div>
 
   </div>
