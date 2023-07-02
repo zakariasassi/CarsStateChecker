@@ -126,7 +126,7 @@ router.delete('/deleteInsuranceDocument/:id', insuranceDocumentController.delete
 
 
 
-
+router.post('/createnewemploy' , Employes.createnewemploy)
 router.post('/loginemployee' ,Employes.loginemployee )
 
 

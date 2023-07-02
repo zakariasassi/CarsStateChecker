@@ -3,8 +3,12 @@ import axios from 'axios';
 import { Box } from '@mui/material';
 import { FaTrash, FaEdit, FaStopCircle } from 'react-icons/fa';
 import { url } from '../../constent/url';
+import toast, { Toaster } from "react-hot-toast";
 
 function UsersManager() {
+
+  const notify = (msg) => toast(msg);
+
   const [adminsData, setAdminsData] = useState([]);
 
   const getalladmins =  async () => {
@@ -20,7 +24,8 @@ function UsersManager() {
     e.preventDefault();
     await  axios.delete( url + `/deleteadmin/${id}`).then((response) => {
       console.log(response)
-    
+      notify(response.data.message)
+
      })
      getalladmins()
   }
@@ -29,7 +34,8 @@ const restrictadmin = async (e , id) => {
   e.preventDefault();
   await  axios.put( url + `/restrictadmin/${id}`).then((response) => {
     console.log(response)
-  
+    notify(response.data.message)
+
    })
    getalladmins()
   }
@@ -38,6 +44,7 @@ const activeadmin = async (e , id) => {
   e.preventDefault();
   await  axios.put( url + `/activeadmin/${id}`).then((response) => {
     console.log(response)
+    notify(response.data.message)
    
    })
    getalladmins()
@@ -52,6 +59,8 @@ const activeadmin = async (e , id) => {
 
   return (
     <>
+
+    <Toaster position='top-right' />
       <div className="flex flex-col items-center p-5 w-full">
         <div className="w-full overflow-x-auto w-full">
           <table className="table-auto w-full" dir="rtl">
@@ -75,20 +84,20 @@ const activeadmin = async (e , id) => {
                   <td className="text-center">{admin.email}</td>
                   <td className="text-center">Superuser</td>
                   <td className="text-center">
-                    <span className="badge bg-success">{admin.state ?  "مفعل" : "غير مفعل"}</span>
+                    <span className=" p-2 rounded-lg bg-red-500 text-white "><span className=' m-2 mt-2'>{admin.state ?  "مفعل" : "غير مفعل"}</span></span>
                   </td>
                   <td className="flex justify-center items-center">
                     <button onClick={(e) => {deleteadmin(e , admin.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
-                      <FaTrash />
+                      <FaTrash className='text-red-500' />
                     </button>
                     <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
                       <FaEdit />
                     </button>
-                    <button type="button" onClick={ e =>  restrictadmin( e , admin.id)} className="btn btn-outline-danger btn-circle btn-lg btn-circle ml-2">
-                      <FaStopCircle />
+                    <button type="button" onClick={ e =>  restrictadmin( e , admin.id)} className="btn bg-red-500 btn-outline-danger hover:bg-red-800 btn-circle btn-lg btn-circle ml-2">
+                      <FaStopCircle className=' text-white hover:text-red-500' />
                     </button>
-                    <button type="button" onClick={ e =>  activeadmin( e , admin.id)} className="btn btn-outline-success btn-circle btn-lg btn-circle ml-2">
-                      <FaStopCircle />
+                    <button type="button" onClick={ e =>  activeadmin( e , admin.id)} className="  bg-green-500 btn-outline-danger hover:bg-green-800  btn btn-outline-success btn-circle btn-lg btn-circle ml-2">
+                      <FaStopCircle  className=' text-white hover:text-red-500'   />
                     </button>
 
                     

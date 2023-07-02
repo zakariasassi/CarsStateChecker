@@ -5,11 +5,17 @@ import { RiLockPasswordLine } from "react-icons/ri";
 import { RiMailLine } from "react-icons/ri";
 import { RiUserSettingsLine } from "react-icons/ri";
 import axios from "axios";
-
+import toast, { Toaster } from "react-hot-toast";
 import "./Addusers.css";
 import { url } from "../../constent/url";
 
+
+
+
 function AddUser() {
+
+  const notify = (msg) => toast(msg);
+
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -29,16 +35,20 @@ function AddUser() {
 
     if (!username || !password || !role || !fullname || !email) {
       // Handle validation error
-      return;
+      return notify(" الرجاء تعبئة كل الحقول")
+
     }
 
     try {
       const response = await axios.post( url +  "/addadmin", formData);
       const data = response.data;
       if (data.state === 1) {
+        notify(data.message)
+
         // User account created successfully
         // Handle success scenario
       } else {
+        notify(data.message)
         // Failed to create user account
         // Handle error scenario
       }
@@ -49,23 +59,15 @@ function AddUser() {
 
   return (
     <>
-      <Box
-        style={{
-          display: "flex",
-          flexDirection: "coulmn",
-          justifyContent: "center",
-          alignItems: "center",
-          padding: 20,
-          width: "100%",
-        }}
-      >
-        <div className="w-full justify-center flex" style={{ height: "100vh" }}>
+    <Toaster position="top-right" />
+
+        <div className="w-full justify-center flex" >
           <div className="w-full flex justify-center">
-            <div className="w-11/12 mt-20 border p-14 rounded">
+            <div className="w-11/12  p-14 rounded">
               <span className="text-3xl float-right ">اضافة مدير نظام</span>
 
               <form
-                className="bg-white rounded space-y-4 text-right"
+                className="bg-white rounded  text-right"
                 onSubmit={handleSubmit}
               >
                 <div>
@@ -160,10 +162,10 @@ function AddUser() {
                   </select>
                 </div>
 
-                <div className="w-full cursor-pointer  justify-center self-center align-middle flex">
+                <div className="w-full cursor-pointer  justify-start self-center align-middle flex" dir="rtl">
                   <button
                     type="submit"
-                    className="bg-blue-700 cursor-pointer  w-60 self-center text-white font-bold py-2 px-4 rounded"
+                    className="bg-green-500 cursor-pointer  w-60  mt-10 float-right self-start text-white font-bold py-2 px-4 rounded"
                   >
                     حفـــــظ
                   </button>
@@ -172,7 +174,7 @@ function AddUser() {
             </div>
           </div>
         </div>
-      </Box>
+    
     </>
   );
 }

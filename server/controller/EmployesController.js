@@ -6,15 +6,39 @@ const Employes =  require('../model/Employes')
 
 
 exports.createnewemploy = async (req , res) => {
-    const  {username  , email , password , fullname } = req.body
+    const  {username  , email , password , fullname , role } = req.body
+    if(!username || !email || !password || !fullname || !role)
+{
+  return   (
+    res.json({
+      msg : 'يرجي تعبئة كل البيانات',
+      state : 0
+  })
+  )
+}
 
+ const finuserame = await Employes.findOne({
+  where :{
+    username  : username
+  }
+})
 
+if(finuserame){
+  return(
+    res.json({
+      
+        msg : ' اسم المستخدم مستعمل ',
+        state : 1
+    
+    })
+  )
+}
     await Employes.create({
-        username , email , password , fullname
+        username , email , password , fullname , role
     }).then(() => {
         res.json(
             {
-                msg : 'تم انتشاء اضافة موظف استعلام',
+                msg : 'تم اضافة موظف استعلام',
                 state : 1
             }
         )
@@ -74,7 +98,7 @@ exports.activeEmploy = async ( req , res , next ) => {
 
     ).then(() => {
       res.json({
-        message: 'Admin Activited',
+        message: 'تم تفعيل الحساب',
         state:1
       })
     }).catch( err => {
@@ -98,7 +122,7 @@ exports.activeEmploy = async ( req , res , next ) => {
 
     ).then(() => {
       res.json({
-        message: 'Admin Restricted',
+        message: 'تم تفييد الحساب',
         state:1
       })
     }).catch( err => {
@@ -116,7 +140,7 @@ exports.activeEmploy = async ( req , res , next ) => {
       }
     }).then(() => {
       res.json({
-        message  : 'Admin deleted',
+        message  : 'تم حدف الحساب',
         state : 1,
       })
     }).catch(err => {
@@ -131,7 +155,50 @@ exports.activeEmploy = async ( req , res , next ) => {
 
 
    exports.loginemployee = async (req , res) => {
-    res.status(200).json({
-      msg : "sfasasf"
-    })
+      const {username , password } = req.body ;
+
+      console.log(req.body)
+      await Employes.findOne({
+        where : {
+          username : username
+        }
+      }).then( resulte => {
+
+        if(resulte.state === 0 ) {
+          res.json({
+            msg : "تم تقييد الحساب راجع الادارة",
+            state: 0
+          })
+        }else {
+          if(resulte){
+            if(resulte.password === password){
+              res.status(200).json({
+                msg : "sfasasf",
+                state: 1 , 
+                user : resulte
+              })
+            }else{
+              res.json({
+                msg : "خطآ في كلمة المرور",
+                state: 0
+              })
+            }
+          }else{
+            res.json({
+              msg : "اسم المتسخدم غير موجود",
+              state: 0
+            })
+          }
+        }
+
+   
+      }).catch(err => {
+        res.status(401).json({
+          msg : "اسم المتسخدم غير موجود",
+          state: 0
+        })
+        console.log(err)
+      })
+
+ 
    }

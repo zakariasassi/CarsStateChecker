@@ -24,9 +24,7 @@ function Login() {
         password: password,
       })
       .then((res) => {
-        console.log(res.data)
         if (res.data.state === 1) {
-          console.log(res)
           window.localStorage.setItem('user' , JSON.stringify(res.data.user))
           window.localStorage.setItem('isLogin' , true)
           navigate("/home");
@@ -42,9 +40,9 @@ function Login() {
 
   return (
     <>
-      <Toaster />
+      <Toaster position="top-right" />
       <div
-        className="bg-gradient-to-r from-purple-800 to-indigo-900 min-h-screen flex items-center justify-center"
+        className="bg-gradient-to-r min-h-screen flex items-center justify-center"
         dir="rtl"
       >
         <motion.div
@@ -65,14 +63,14 @@ function Login() {
               >
                 اسم المستخدم
               </label>
-              <div className="flex items-center bg-gray-100 rounded-lg px-3 py-2">
+              <div className="flex items-center  rounded-lg px-3 py-2">
                 <FiUser className="text-gray-500" />
                 <input
                   onChange = { e => setUsername(e.target.value)}
                   type="text"
                   id="username"
                   placeholder="ادخل اسم المستخدم"
-                  className="outline-none bg-transparent mx-2 flex-1 text-gray-800"
+                  className="outline-none bg-transparent mx-2 p-2 flex-1 text-gray-800"
                 />
               </div>
             </div>
@@ -84,14 +82,14 @@ function Login() {
               >
                 كلمة المرور
               </label>
-              <div className="flex items-center bg-gray-100 rounded-lg px-3 py-2">
+              <div className="flex items-center rounded-lg px-3 py-2">
                 <FiLock className="text-gray-500" />
                 <input
                   onChange = { e => setPassword(e.target.value)}
                   type="password"
                   id="password"
                   placeholder="ادخل كلمة المرور"
-                  className="outline-none bg-transparent mx-2 flex-1 text-gray-800"
+                  className="outline-none bg-transparent p-2  mx-2 flex-1 text-gray-800"
                 />
               </div>
             </div>
@@ -101,7 +99,7 @@ function Login() {
                 handellogin(e);
               }}
               type="submit"
-              className="bg-indigo-500 text-white rounded-lg px-4 py-2 w-full font-semibold text-lg"
+              className="bg-green-500 text-white rounded-lg px-4 py-2 w-full font-semibold text-lg"
             >
               تسجيل الدخول
             </button>

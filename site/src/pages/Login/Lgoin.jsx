@@ -1,8 +1,16 @@
-import React , {Children, useState} from 'react'
+import React , { useState , useContext} from 'react'
 import  axios  from 'axios';
 import { url } from '../../../../dashboard/src/constent/url';
+import { AuthContext } from '../../../context/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 function Lgoin() {
+    const { login ,  setLogin} = useContext(AuthContext)
+    const notify = (msg) => toast(msg);
+
+    const navigate = useNavigate()
 
     const [username , setusername] = useState('');
     const [password , setPassword] = useState('')
@@ -10,13 +18,20 @@ function Lgoin() {
 
 
     const Lginguser = async (e) => {
-                e.preventDefault();
+            e.preventDefault();
             await axios.post(url + '/loginemployee' , {username , password }).then((res) => {
-                console.log(res)
-                if(res.data.state == 0 ) {
-                    console.log(res.data.msg)
+                if(res.data.state === 1 ) {
+                    console.log(res.data)
+                    window.localStorage.setItem('user' , JSON.stringify(res.data.user))
+                    window.localStorage.setItem('isLogin' , true)
+                    setLogin(true)
+                    navigate('/home')
+                    console.log(login)
+
                 }else{
-                    console.log(res.data.user)
+                    console.log(res.data)
+                    notify(res.data.msg)
+
                 }
             }).catch( err => {
                 console.log(err)
@@ -25,6 +40,9 @@ function Lgoin() {
     
   return (
     <>
+    <Toaster 
+            position='top-right'
+     />
  
     <div className='bg-blue-950 h-screen w-full'>
     <section className="bg-blue-950 dark:bg-gray-900" dir='rtl'>

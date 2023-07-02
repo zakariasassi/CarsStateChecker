@@ -9,24 +9,28 @@ import Layout from './components/Layout/Layout';
 import Jomrok from './pages/JomrokCheck/Jomrok'
 import Licence from './pages/LicenceCheck/Licence'
 import Incurance from './pages/IncuranceCheck/Incurance'
+import { AuthContext } from '../context/AuthContext';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [login , setLogin] = useState(false)
 
   return (
-    <>
-
+ 
+    <AuthContext.Provider value={{login , setLogin}}>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Login />} />
-          <Route path='/home' element={<Layout page={<Main />} />} />
-          <Route path='/jomrok' element={<Layout page={<Jomrok />} />} />
-          <Route path='/incurance' element={<Layout page={<Incurance />} />} />
-          <Route path='/licence' element={<Layout page={<Licence />} />} />
+          <Route path='/' element={ login ? <Layout page={<Main />} /> :  <Login />} />
+          <Route path='/home' element={ login ? <Layout page={<Main />} /> : <Login />} />
+          <Route path='/jomrok' element={ login ? <Layout page={<Jomrok />} /> :   <Login />} />
+          <Route path='/incurance' element={login ?   <Layout page={<Incurance />} /> : <Login />} />
+          <Route path='/licence' element={ login ?   <Layout page={<Licence />} /> : <Login /> } />
 
         </Routes>
       </BrowserRouter>
-    </>
+      </AuthContext.Provider>
+
+
   )
 }
 

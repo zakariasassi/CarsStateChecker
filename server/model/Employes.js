@@ -21,11 +21,16 @@ const employ =  db.define('employ' , {
         allowNull : false,
         
     },
-fullname : {
-      type : DataTypes.STRING,
-        allowNull : false,
-        
-},
+        fullname : {
+            type : DataTypes.STRING,
+                allowNull : false,
+                
+        },
+        role: {
+          type : DataTypes.STRING,
+          allowNull : true
+
+        },
 
  
 
