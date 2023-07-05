@@ -12,54 +12,31 @@ const licnencesdepartment =  db.define('licnencesdepartment' , {
         primaryKey: true,
         autoIncrement : true,
     },
-    bord_number : {
+    car_id : {
         type : DataTypes.INTEGER,
         allowNullValues : false
     },
-    counrty  : {
+    license_section  : {
         type : DataTypes.STRING,
         allowNullValues : false
     },
-    year_made  : {
+    vehicle_number : {
         type : DataTypes.INTEGER,
         allowNullValues : false
     },
-    body_number : {
-        type : DataTypes.INTEGER,
-        allowNullValues : false
-    },
-    engine_power : {
-        type : DataTypes.INTEGER,
-        allowNullValues : false
-    },
-    passngers_number : {
-        type : DataTypes.INTEGER,
-        allowNullValues : false
-    },
-    wighet  : {
-        type : DataTypes.INTEGER,
-        allowNullValues : false
-    },
-    type_of_licence : {
+    usable_for : {
         type : DataTypes.STRING,
-        allowNull: false
+        allowNullValues : false
     },
-    place_linked : {
+    examiners_name : {
         type : DataTypes.STRING,
-        allowNull: false
+        allowNullValues : false
     },
-    type : {
-        type : DataTypes.STRING,
-        allowNull: false
+    examination_date : {
+        type : DataTypes.DATE,
+        allowNullValues : false
     },
-    car_color : {
-        type : DataTypes.STRING,
-        allowNull: false
-    },
-    engine_number : {
-        type : DataTypes.INTEGER,
-        allowNull: false
-    },
+ 
     createdAt: {
         type : DataTypes.DATEONLY
     },

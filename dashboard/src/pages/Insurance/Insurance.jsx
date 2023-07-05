@@ -7,6 +7,7 @@ function Insurance() {
 
 
   const [companyName, setCompanyName] = useState('');
+  const [car_id, setCarID] = useState('');
   const [insuranceType, setInsuranceType] = useState('');
   const [documentNumber, setDocumentNumber] = useState('');
   const [issuingBranch, setIssuingBranch] = useState('');
@@ -16,10 +17,18 @@ function Insurance() {
   const [insuredName, setInsuredName] = useState('');
   const [insuredAddress, setInsuredAddress] = useState('');
 
+    const [Value_of_installment, setValueIfInstallment] = useState('');
+  const [Tax, setTax] = useState('');
+  const [Entry_fee, setEntryfee] = useState('');
+  const [Stamp, setStamp] = useState('');
+  const [Issuance_exp, setIssuanceExp] = useState('');
+  const [Total, setTotal] = useState('');
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("zakaria")
     const formData = {
+      car_id,
       companyName,
       insuranceType,
       documentNumber,
@@ -29,6 +38,16 @@ function Insurance() {
       customerNumber,
       insuredName,
       insuredAddress,
+      Value_of_installment,
+      Tax,
+      Entry_fee,
+      Stamp,
+      Issuance_exp,
+      Total
+
+
+
+
     };
 
     try {
@@ -81,6 +100,12 @@ function Insurance() {
 
     <div className="grid grid-cols-2 gap-4 mb-4">
 
+          <div>
+        <label className="block text-lg mb-2">الرقم التسلسلي للسيارة</label>
+        <input onChange={e =>  setCarID(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
+
       <div>
         <label className="block text-lg mb-2">اسم الشركة:</label>
         <input onChange={e =>  setCompanyName(e.target.value) }  className="form-control" type="text"  required />
@@ -127,8 +152,30 @@ function Insurance() {
       </div>
 
       <div>
-        <label className="block text-lg mb-2"> رقم اللوحة</label>
-        <input onChange={e =>  setInsuredAddress(e.target.value) }  className="form-control" type="text"  required />
+        <label className="block text-lg mb-2"> قيمة القسط </label>
+        <input onChange={e =>  setValueIfInstallment(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
+
+            <div>
+        <label className="block text-lg mb-2"> الضريبة  </label>
+        <input onChange={e =>  setTax(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
+       <div>
+        <label className="block text-lg mb-2"> رسوم الاشتراك  </label>
+        <input onChange={e =>  setEntryfee(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
+             <div>
+        <label className="block text-lg mb-2"> الدمغة</label>
+        <input onChange={e =>  setIssuanceExp(e.target.value) }  className="form-control" type="text"  required />
+      </div>
+
+
+                   <div>
+        <label className="block text-lg mb-2"> الاجمالي</label>
+        <input disabled  className="form-control" type="text"  required />
       </div>
 
     </div>

@@ -4,6 +4,7 @@ import axios from "axios";
 import { url } from "../../constent/url";
 function AddNewJomrocCard() {
   const [releasePermitNumber, setReleasePermitNumber] = useState("");
+  const [car_id, setCarID] = useState("");
   const [releasedGoods, setReleasedGoods] = useState("");
   const [shipName, setShipName] = useState("");
   const [arrivalDate, setArrivalDate] = useState("");
@@ -25,7 +26,8 @@ function AddNewJomrocCard() {
     // Create an object with the field values
     const data = {
       release_permit_number: releasePermitNumber,
-      released_goods: releasedGoods,
+      Place_of_customs_possession: releasedGoods,
+      car_id : car_id , 
       ship_name: shipName,
       arrival_date: arrivalDate,
       importer_name: importerName,
@@ -78,6 +80,14 @@ function AddNewJomrocCard() {
                     رقم إذن الإفراج الجمركي:
                   </label>
                   <input onChange={e => setReleasePermitNumber(e.target.value)} className="form-control" type="text" />
+                </div>
+
+
+                <div>
+                  <label className="block text-lg mb-2">
+                    رقم السيارة
+                    </label>
+                  <input onChange={e => setCarID(e.target.value)} className="form-control" type="text" />
                 </div>
 
                 <div>

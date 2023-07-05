@@ -8,6 +8,7 @@ const jomrokController = require('../controller/JomrekDepartmentController')
 const insuranceDocumentController = require('../controller/IncuranceDepartmentController')
 const Reports = require('../controller/ReportsController')
 const Employes = require('../controller/EmployesController')
+const Car = require('../controller/CarController')
 
 
 

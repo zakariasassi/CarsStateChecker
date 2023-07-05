@@ -8,18 +8,13 @@ exports.createLicenceDepartment = async (req, res) => {
     try {
       const { bord_number, country, year_made, body_number, engine_power, passngers_number, wighet, type_of_licence, place_linked, type, car_color, engine_number } = req.body;
       const licence = await LicnencesDepartment.create({
-        bord_number,
-        country,
-        year_made,
-        body_number,
-        engine_power,
-        passngers_number,
-        wighet,
-        type_of_licence,
-        place_linked,
-        type,
-        car_color,
-        engine_number
+
+        car_id,
+        license_section,
+        vehicle_number,
+        usable_for,
+        examiners_name,
+        examination_date,
       });
       res.status(201).json(licence);
     } catch (error) {

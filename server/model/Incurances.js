@@ -7,6 +7,10 @@ const InsuranceDocument = db.define('InsuranceDocument', {
     primaryKey: true,
     autoIncrement: true,
   },
+  car_id : {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   companyName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -43,6 +47,34 @@ const InsuranceDocument = db.define('InsuranceDocument', {
     type: DataTypes.STRING,
     allowNull: false,
   },
+
+  
+  Value_of_installment: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    
+  },
+  Tax : {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  Entry_fee : {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  Stamp : {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  Issuance_exp : {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  Total: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+
   createdAt: {
       type : DataTypes.DATEONLY
   },
