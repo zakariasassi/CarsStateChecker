@@ -10,16 +10,9 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
-
-
 import { Box } from "@mui/material";
 import axios from "axios";
 import { url } from "../../constent/url";
-
-
-
-
-
 
 function Insurance() {
   const [companyName, setCompanyName] = useState("");
@@ -39,10 +32,7 @@ function Insurance() {
   const [Issuance_exp, setIssuanceExp] = useState("");
   const [Total, setTotal] = useState("");
 
-
-
-
-  //car details 
+  //car details
 
   const [boardNumber, setBoardNumber] = useState("");
   const [chassisNumber, setChassisNumber] = useState("");
@@ -57,18 +47,9 @@ function Insurance() {
   const [carLoad, setCarLoad] = useState("");
   const [fuelType, setFuelType] = useState("");
   const [typeOfJob, setJopType] = useState("");
-  const [numberOfPassengers, setNUmberOfPassengers  ] = useState("");
+  const [numberOfPassengers, setNUmberOfPassengers] = useState("");
   const [placeOfRegistration, setPlaceOfRegestration] = useState("");
 
-
-
-
-
-
-
-
-
-  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("zakaria");
@@ -123,10 +104,7 @@ function Insurance() {
     }
   };
 
-  const handelcarsubbmit = (e)  => {
-
-
-  }
+  const handelcarsubbmit = (e) => {};
 
   return (
     <>
@@ -150,8 +128,6 @@ function Insurance() {
 
             <form className="w-100">
               <div className="grid grid-cols-2 gap-4 mb-4">
-
-
                 <div>
                   <label className="block text-lg mb-2">اسم الشركة:</label>
                   <input
@@ -288,23 +264,19 @@ function Insurance() {
 
                 <div>
                   <label className="block text-lg mb-2"> الاجمالي</label>
-                  <input
-                    disabled
-                    className="form-control"
-                    type="text"
-                    required
-                  />
+                  <input className="form-control" type="text" required />
                 </div>
 
+                <span className="text-2xl font-bold mb-4 ">بيانات السيارة</span>
+              </div>
 
+              <div className="grid grid-cols-2 gap-4 mb-4" dir="rtl">
+                {/* car details data */}
 
-                <h1>بيانات السيارة</h1>
-                
                 <div>
                   <label className="block text-lg mb-2"> رقم اللوحة</label>
                   <input
-                    onChange={e => setBoardNumber(e.target.value)}
-                    disabled
+                    onChange={(e) => setBoardNumber(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -312,10 +284,12 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> رقم هيكل السيارة </label>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    رقم هيكل السيارة{" "}
+                  </label>
                   <input
-                    onChange={e => setChassisNumber(e.target.value)}
-                    disabled
+                    onChange={(e) => setChassisNumber(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -323,34 +297,29 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> رقم  المركبة  </label>
+                  <label className="block text-lg mb-2"> رقم المركبة </label>
                   <input
-                    onChange={e => setVehicleId(e.target.value)}
-                    disabled
+                    onChange={(e) => setVehicleId(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
-
 
                 <div>
-                  <label className="block text-lg mb-2"> نوع السيارة    </label>
+                  <label className="block text-lg mb-2"> نوع السيارة </label>
                   <input
-                    onChange={e => setTypeOfCar(e.target.value)}
-                    disabled
+                    onChange={(e) => setTypeOfCar(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
-
 
                 <div>
                   <label className="block text-lg mb-2"> صنف السيارة</label>
                   <input
-                    onChange={e => setCarClass(e.target.value)}
-                    disabled
+                    onChange={(e) => setCarClass(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -358,59 +327,29 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2">  لون السيارة</label>
+                  <label className="block text-lg mb-2"> لون السيارة</label>
                   <input
-                    onChange={e => setCarColor(e.target.value)}
-                    disabled
+                    onChange={(e) => setCarColor(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
-
 
                 <div>
-                  <label className="block text-lg mb-2">   سنة صنع السيارة</label>
+                  <label className="block text-lg mb-2"> سنة صنع السيارة</label>
                   <input
-                    onChange={e => setYearMade(e.target.value)}
-                    disabled
+                    onChange={(e) => setYearMade(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
-
-
 
                 <div>
                   <label className="block text-lg mb-2">بلد الصنع</label>
                   <input
-                    onChange={e => setCounterOfManufacture(e.target.value)}
-                    disabled
-                    className="form-control"
-                    type="text"
-                    required
-                  />
-                </div>
-
-
-                <div>
-                  <label className="block text-lg mb-2"> حالة السيارة</label>
-                  <input
-                    onChange={e => setCarStatus(e.target.value)}
-                    disabled
-                    className="form-control"
-                    type="text"
-                    required
-                  />
-                </div>
-
-
-                <div>
-                  <label className="block text-lg mb-2"> قوة السيارة بالحصان</label>
-                  <input
-                    onChange={e => setHorsePower(e.target.value)}
-                    disabled
+                    onChange={(e) => setCounterOfManufacture(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -418,22 +357,9 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> الحمولة  </label>
+                  <label className="block text-lg mb-2"> حالة السيارة</label>
                   <input
-                    onChange={e => setCarLoad(e.target.value)}
-                    disabled
-                    className="form-control"
-                    type="text"
-                    required
-                  />
-                </div>
-
-
-                <div>
-                  <label className="block text-lg mb-2"> نوع الوقود  </label>
-                  <input
-                    onChange={e => setFuelType(e.target.value)}
-                    disabled
+                    onChange={(e) => setCarStatus(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -441,10 +367,12 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> نوع العمل  </label>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    قوة السيارة بالحصان
+                  </label>
                   <input
-                    onChange={e => setJopType(e.target.value)}
-                    disabled
+                    onChange={(e) => setHorsePower(e.target.value)}
                     className="form-control"
                     type="text"
                     required
@@ -452,34 +380,58 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> عدد الركاب   </label>
+                  <label className="block text-lg mb-2"> الحمولة </label>
                   <input
-                    onChange={e => setNUmberOfPassengers(e.target.value)}
-                    disabled
+                    onChange={(e) => setCarLoad(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
-
 
                 <div>
-                  <label className="block text-lg mb-2"> مكان تسجيل السيارة</label>
+                  <label className="block text-lg mb-2"> نوع الوقود </label>
                   <input
-                    onChange={e => setPlaceOfRegestration(e.target.value)}
-                    disabled
+                    onChange={(e) => setFuelType(e.target.value)}
                     className="form-control"
                     type="text"
                     required
                   />
                 </div>
 
+                <div>
+                  <label className="block text-lg mb-2"> نوع العمل </label>
+                  <input
+                    onChange={(e) => setJopType(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
 
+                <div>
+                  <label className="block text-lg mb-2"> عدد الركاب </label>
+                  <input
+                    onChange={(e) => setNUmberOfPassengers(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
 
-
-
+                <div>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    مكان تسجيل السيارة
+                  </label>
+                  <input
+                    onChange={(e) => setPlaceOfRegestration(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
               </div>
-
               <div className="text-right">
                 <button
                   onClick={(e) => {
