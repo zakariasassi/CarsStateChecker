@@ -1,6 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
 @font-face {
     font-family: 'Tajawal';
     font-style: normal;

@@ -51,6 +51,8 @@ function Employees() {
     <>
 
 <div className="overflow-x-auto w-full m-5" dir='rtl'>
+
+
 <div className="toast toast-start">
   <div className="alert alert-info">
     <span>New mail arrived.</span>
@@ -58,7 +60,14 @@ function Employees() {
   <div className="alert alert-success">
     <span>Message sent successfully.</span>
   </div>
+
+  <div className="alert alert-error">
+    <span>Message sent successfully.</span>
+  </div>
 </div>
+
+
+
   <table className="table table-xs" dir='rtl'>
     <thead>
       <tr>
