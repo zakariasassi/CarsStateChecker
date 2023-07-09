@@ -1,15 +1,107 @@
 const InsuranceDocument = require('../model/Incurances');
+const CarModel = require('../model/Car')
 const { Op } = require('sequelize');
 // Create a new insurance document
 exports.createInsuranceDocument = async (req, res) => {
-  try {
-    const insuranceDocument = await InsuranceDocument.create(req.body);
-    res.status(201).json({ success: true, data: insuranceDocument });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: 'Failed to create insurance document' });
+  const {
+    companyName , 
+    insuranceType, 
+    documentNumber, 
+    issuingBranch, 
+    insuranceStartDate, 
+    insuranceEndDate, 
+    customerNumber, 
+    insuredName, 
+    insuredAddress, 
+    Value_of_installment, 
+    Tax ,
+    Entry_fee, 
+    Stamp, 
+    Issuance_exp, 
+    Total, 
+  
+    //car details
+  
+    boardNumber, 
+    chassisNumber, 
+    vehicleId, 
+    typeOfCar, 
+    carClass, 
+    carColour, 
+    yearMade, 
+    countryOfManufacture, 
+    carStatus, 
+    horsePower, 
+    carLoad, 
+    fuelType, 
+    typeOfJob, 
+    numberOfPassengers, 
+    placeOfRegistration
+  } = req.body
+
+  
+ 
+
+
+
+
+    await CarModel.create(
+      {
+
+      
+        //car details
+      
+        boardNumber, 
+        chassisNumber, 
+        vehicleId, 
+        typeOfCar, 
+        carClass, 
+        carColour, 
+        yearMade, 
+        countryOfManufacture, 
+        carStatus, 
+        horsePower, 
+        carLoad, 
+        fuelType, 
+        typeOfJob, 
+        numberOfPassengers, 
+        placeOfRegistration
+
+      } 
+    ).then( async (resulte) => {
+          await InsuranceDocument.create({
+            companyName ,
+            CarCarId : resulte.carId ,
+            insuranceType, 
+            documentNumber, 
+            issuingBranch, 
+            insuranceStartDate, 
+            insuranceEndDate, 
+            customerNumber, 
+            insuredName, 
+            insuredAddress, 
+            Value_of_installment, 
+            Tax ,
+            Entry_fee, 
+            Stamp, 
+            Issuance_exp, 
+            Total, 
+          }).then(() => {
+            res.status(201).json({ success: true, message : 'تمت تأمين السيارة' });
+
+          }).catch( error => {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+          })
+    }).catch(error => {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+    })
+
+
   }
-};
+
+
 
 // Get all insurance documents
 exports.getAllInsuranceDocuments = async (req, res) => {

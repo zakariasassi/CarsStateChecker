@@ -17,6 +17,9 @@ function SInedCars() {
   }
 
 
+  const showCarDetails =  (e , car) => {
+    console.log(car)
+  }
   const deletecarsData = async (e , id) => {
     e.preventDefault();
       await axios.delete( url + `/deleteLicenceDepartment/${id}`).then((res) => {
@@ -34,38 +37,29 @@ function SInedCars() {
         <table className="table m-5 p-lg-5" dir="rtl">
           <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col" style={{ textAlign: 'center' }}>رقم الوحة</th>
-              <th scope="col" style={{ textAlign: 'center' }}>الدولة</th>
-              <th scope="col" style={{ textAlign: 'center' }}>سنة الصنع</th>
-              <th scope="col" style={{ textAlign: 'center' }}>رقم الهيكل</th>
-              <th scope="col" style={{ textAlign: 'center' }}>قوة المحرك</th>
-              <th scope="col" style={{ textAlign: 'center' }}>عدد الركاب</th>
-              <th scope="col" style={{ textAlign: 'center' }}>الوزن</th>
-              <th scope="col" style={{ textAlign: 'center' }}>نوع الترخيص</th>
-              <th scope="col" style={{ textAlign: 'center' }}>المكان المرتبط</th>
-              <th scope="col" style={{ textAlign: 'center' }}>النوع</th>
-              <th scope="col" style={{ textAlign: 'center' }}>لون السيارة</th>
-              <th scope="col" style={{ textAlign: 'center' }}>رقم المحرك</th>
+              <th scope="col" style={{ textAlign: 'center' }}>الرقم التسلسلي</th>
+              <th scope="col" style={{ textAlign: 'center' }}>قسم ترخيص</th>
+              <th scope="col" style={{ textAlign: 'center' }}> رقم المركبة</th>
+              <th scope="col" style={{ textAlign: 'center' }}> صالحة للاستعمال لمدة</th>
+              <th scope="col" style={{ textAlign: 'center' }}>اسم الفاحص</th>
+              <th scope="col" style={{ textAlign: 'center' }}>التاريخ</th>
+              <th scope="col" style={{ textAlign: 'center' }}>بيانات السيارة</th>
               <th scope="col" style={{ textAlign: 'center' }}>عمليات</th>
             </tr>
           </thead>
           <tbody>
             {carsData.map((car, index) => (
               <tr key={index}>
-                <th scope="row">{index + 1}</th>
-                <td style={{ textAlign: 'center' }}>{car.bord_number}</td>
-                <td style={{ textAlign: 'center' }}>{car.counrty}</td>
-                <td style={{ textAlign: 'center' }}>{car.year_made}</td>
-                <td style={{ textAlign: 'center' }}>{car.body_number}</td>
-                <td style={{ textAlign: 'center' }}>{car.engine_power}</td>
-                <td style={{ textAlign: 'center' }}>{car.passngers_number}</td>
-                <td style={{ textAlign: 'center' }}>{car.wighet}</td>
-                <td style={{ textAlign: 'center' }}>{car.type_of_licence}</td>
-                <td style={{ textAlign: 'center' }}>{car.place_linked}</td>
-                <td style={{ textAlign: 'center' }}>{car.type}</td>
-                <td style={{ textAlign: 'center' }}>{car.car_color}</td>
-                <td style={{ textAlign: 'center' }}>{car.engine_number}</td>
+                <td style={{ textAlign: 'center' }}>{car.id}</td>
+                <td style={{ textAlign: 'center' }}>{car.license_section}</td>
+                <td style={{ textAlign: 'center' }}>{car.vehicle_number}</td>
+                <td style={{ textAlign: 'center' }}>{car.usable_for}</td>
+                <td style={{ textAlign: 'center' }}>{car.examiners_name}</td>
+                <td style={{ textAlign: 'center' }}>{car.createdAt}</td>
+                <td style={{ textAlign: 'center' }}>
+                <button onClick={(e) => showCarDetails(e , car)}  className='btn btn-outline-success btn-circle btn-lg btn-circle m-2'>
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </button></td>
                 <td style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                   <button onClick={(e) => {deletecarsData(e , car.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                     <i className="fa fa-trash"></i>

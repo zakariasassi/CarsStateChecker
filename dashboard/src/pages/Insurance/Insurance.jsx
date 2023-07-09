@@ -70,7 +70,23 @@ function Insurance() {
       Stamp,
       Issuance_exp,
       Total,
-    };
+        
+    boardNumber, 
+    chassisNumber, 
+    vehicleId, 
+    typeOfCar, 
+    carClass, 
+    carColour, 
+    yearMade, 
+    countryOfManufacture, 
+    carStatus, 
+    horsePower, 
+    carLoad, 
+    fuelType, 
+    typeOfJob, 
+    numberOfPassengers, 
+    placeOfRegistration
+      };
 
     try {
       const response = await axios
@@ -253,7 +269,7 @@ function Insurance() {
                 </div>
 
                 <div>
-                  <label className="block text-lg mb-2"> الدمغة</label>
+                  <label className="block text-lg mb-2"> مصاريف الاصدار  </label>
                   <input
                     onChange={(e) => setIssuanceExp(e.target.value)}
                     className="form-control"
@@ -263,8 +279,18 @@ function Insurance() {
                 </div>
 
                 <div>
+                  <label className="block text-lg mb-2"> الدمغة</label>
+                  <input
+                    onChange={(e) => setStamp(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
                   <label className="block text-lg mb-2"> الاجمالي</label>
-                  <input className="form-control" type="text" required />
+                  <input  onChange={ (e) => setTotal(e.target.value)} className="form-control" type="text" required />
                 </div>
 
                 <span className="text-2xl font-bold mb-4 ">بيانات السيارة</span>

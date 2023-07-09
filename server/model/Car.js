@@ -1,10 +1,6 @@
 
 const {Sequelize , DataTypes} = require('sequelize');
 
-const JomroklModel = require('../model/Jomrok')
-const IncuranceModel = require('../model/Incurances')
-const LicenceModel = require('../model/LisenceDepartment')
-
 const db = require('../config/db');
 
 
@@ -89,14 +85,6 @@ const Car = db.define('Car', {
   });
 
 
-
-  Car.belongsTo(JomroklModel)
-  Car.belongsTo(LicenceModel)
-  Car.belongsTo(IncuranceModel)
-
-JomroklModel.hasMany(Car)
-LicenceModel.hasMany(Car)
-IncuranceModel.hasMany(Car)
 
   
   Car.sync({alter : true}).then(() => { console.log("Car table sync successful")});

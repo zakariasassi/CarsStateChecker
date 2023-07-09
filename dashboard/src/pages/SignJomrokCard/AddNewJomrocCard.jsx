@@ -4,7 +4,6 @@ import axios from "axios";
 import { url } from "../../constent/url";
 function AddNewJomrocCard() {
   const [releasePermitNumber, setReleasePermitNumber] = useState("");
-  const [car_id, setCarID] = useState("");
   const [releasedGoods, setReleasedGoods] = useState("");
   const [shipName, setShipName] = useState("");
   const [arrivalDate, setArrivalDate] = useState("");
@@ -21,13 +20,41 @@ function AddNewJomrocCard() {
   const [date, setDate] = useState("");
   const [goodsDescription, setGoodsDescription] = useState("");
 
+
+
+
+
+
+
+  //car_details 
+      //car details
+
+      const [boardNumber, setBoardNumber] = useState("");
+      const [chassisNumber, setChassisNumber] = useState("");
+      const [vehicleId, setVehicleId] = useState("");
+      const [typeOfCar, setTypeOfCar] = useState("");
+      const [carClass, setCarClass] = useState("");
+      const [carColour, setCarColor] = useState("");
+      const [yearMade, setYearMade] = useState("");
+      const [countryOfManufacture, setCounterOfManufacture] = useState("");
+      const [carStatus, setCarStatus] = useState("");
+      const [horsePower, setHorsePower] = useState("");
+      const [carLoad, setCarLoad] = useState("");
+      const [fuelType, setFuelType] = useState("");
+      const [typeOfJob, setJopType] = useState("");
+      const [numberOfPassengers, setNUmberOfPassengers] = useState("");
+      const [placeOfRegistration, setPlaceOfRegestration] = useState("");
+  
+    
+      
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Create an object with the field values
     const data = {
       release_permit_number: releasePermitNumber,
       Place_of_customs_possession: releasedGoods,
-      car_id : car_id , 
       ship_name: shipName,
       arrival_date: arrivalDate,
       importer_name: importerName,
@@ -42,6 +69,24 @@ function AddNewJomrocCard() {
       agent_name: agentName,
       date: date,
       goods_description: goodsDescription,
+
+
+      //cardetails
+      boardNumber, 
+      chassisNumber, 
+      vehicleId, 
+      typeOfCar, 
+      carClass, 
+      carColour, 
+      yearMade, 
+      countryOfManufacture, 
+      carStatus, 
+      horsePower, 
+      carLoad, 
+      fuelType, 
+      typeOfJob, 
+      numberOfPassengers, 
+      placeOfRegistration
     };
 
     // Make a POST request to your server
@@ -83,12 +128,7 @@ function AddNewJomrocCard() {
                 </div>
 
 
-                <div>
-                  <label className="block text-lg mb-2">
-                    رقم السيارة
-                    </label>
-                  <input onChange={e => setCarID(e.target.value)} className="form-control" type="text" />
-                </div>
+          
 
                 <div>
                   <label className="block text-lg mb-2">
@@ -111,7 +151,7 @@ function AddNewJomrocCard() {
 
                 <div>
                   <label className="block text-lg mb-2">اسم المستورد:</label>
-                  <input onChange={e => setAgentName(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setImporterName(e.target.value)}  className="form-control" type="text" />
                 </div>
 
                 <div>
@@ -177,6 +217,186 @@ function AddNewJomrocCard() {
                   <input onChange={e => setGoodsDescription(e.target.value)}  className="form-control" type="text" />
                 </div>
               </div>
+
+
+
+
+
+
+
+
+
+
+              <div className="mt-2  p-3 border-4 border-green-500">
+                  <p className="text-2xl font-bold  text-center ">بيانات السيارة</p>
+
+                  </div>
+              <div className="grid grid-cols-2 gap-4 mb-4 w-full mt-10" dir="rtl">
+                {/* car details data */}
+
+                <div>
+                  <label className="block text-lg mb-2"> رقم اللوحة</label>
+                  <input
+                    onChange={(e) => setBoardNumber(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    رقم هيكل السيارة{" "}
+                  </label>
+                  <input
+                    onChange={(e) => setChassisNumber(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> رقم المركبة </label>
+                  <input
+                    onChange={(e) => setVehicleId(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> نوع السيارة </label>
+                  <input
+                    onChange={(e) => setTypeOfCar(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> صنف السيارة</label>
+                  <input
+                    onChange={(e) => setCarClass(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> لون السيارة</label>
+                  <input
+                    onChange={(e) => setCarColor(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> سنة صنع السيارة</label>
+                  <input
+                    onChange={(e) => setYearMade(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2">بلد الصنع</label>
+                  <input
+                    onChange={(e) => setCounterOfManufacture(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> حالة السيارة</label>
+                  <input
+                    onChange={(e) => setCarStatus(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    قوة السيارة بالحصان
+                  </label>
+                  <input
+                    onChange={(e) => setHorsePower(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> الحمولة </label>
+                  <input
+                    onChange={(e) => setCarLoad(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> نوع الوقود </label>
+                  <input
+                    onChange={(e) => setFuelType(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> نوع العمل </label>
+                  <input
+                    onChange={(e) => setJopType(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2"> عدد الركاب </label>
+                  <input
+                    onChange={(e) => setNUmberOfPassengers(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-lg mb-2">
+                    {" "}
+                    مكان تسجيل السيارة
+                  </label>
+                  <input
+                    onChange={(e) => setPlaceOfRegestration(e.target.value)}
+                    className="form-control"
+                    type="text"
+                    required
+                  />
+                </div>
+              </div>
+
+
+
+
               <button
                 onClick={(e) => {
                   handleSubmit(e);

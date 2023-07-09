@@ -1,4 +1,5 @@
 const {Sequelize , DataTypes} = require('sequelize');
+const CarModel = require('./Car')
 const db = require('../config/db');
 
 
@@ -12,10 +13,8 @@ const licnencesdepartment =  db.define('licnencesdepartment' , {
         primaryKey: true,
         autoIncrement : true,
     },
-    car_id : {
-        type : DataTypes.INTEGER,
-        allowNullValues : false
-    },
+
+
     license_section  : {
         type : DataTypes.STRING,
         allowNullValues : false
@@ -51,7 +50,8 @@ const licnencesdepartment =  db.define('licnencesdepartment' , {
 
 })
 
-
+CarModel.hasMany(licnencesdepartment)
+licnencesdepartment.belongsTo(CarModel)
 
 licnencesdepartment.sync({alter : true} ).then(() => {
     console.log("licnencesdepartment Sync")

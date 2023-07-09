@@ -1,27 +1,89 @@
 const LicnencesDepartment = require('../model/LisenceDepartment')
-
+const CarModel = require('../model/Car')
 
 
 
 
 exports.createLicenceDepartment = async (req, res) => {
-    try {
-      const { bord_number, country, year_made, body_number, engine_power, passngers_number, wighet, type_of_licence, place_linked, type, car_color, engine_number } = req.body;
-      const licence = await LicnencesDepartment.create({
+  const {
+    license_section,
+    vehicle_number,
+    usable_for,
+    examiners_name,
+    examination_date,
+  
+    //car details
+  
+    boardNumber, 
+    chassisNumber, 
+    vehicleId, 
+    typeOfCar, 
+    carClass, 
+    carColour, 
+    yearMade, 
+    countryOfManufacture, 
+    carStatus, 
+    horsePower, 
+    carLoad, 
+    fuelType, 
+    typeOfJob, 
+    numberOfPassengers, 
+    placeOfRegistration
+  } = req.body
 
-        car_id,
-        license_section,
+  
+ 
+
+
+
+
+    await CarModel.create(
+      {
+
+      
+        //car details
+      
+        boardNumber, 
+        chassisNumber, 
+        vehicleId, 
+        typeOfCar, 
+        carClass, 
+        carColour, 
+        yearMade, 
+        countryOfManufacture, 
+        carStatus, 
+        horsePower, 
+        carLoad, 
+        fuelType, 
+        typeOfJob, 
+        numberOfPassengers, 
+        placeOfRegistration
+
+      } 
+    ).then( async (resulte) => {
+          await LicnencesDepartment.create({
+         license_section,
         vehicle_number,
         usable_for,
         examiners_name,
         examination_date,
-      });
-      res.status(201).json(licence);
-    } catch (error) {
+        CarCarId : resulte.carId
+
+
+          }).then(() => {
+            res.status(201).json({ success: true, message : 'تمت تأمين السيارة' });
+
+          }).catch( error => {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+          })
+    }).catch(error => {
       console.error(error);
-      res.status(500).json({ error: 'An error occurred while creating the record' });
-    }
-  };
+      res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+    })
+
+
+}
   
 
 
@@ -29,7 +91,11 @@ exports.createLicenceDepartment = async (req, res) => {
 
   exports.getLicenceDepartments = async (req, res) => {
     try {
-      const licences = await LicnencesDepartment.findAll();
+      const licences = await LicnencesDepartment.findAll({
+        include : [
+          {model : CarModel}
+        ]
+      });
       res.status(200).json(licences);
     } catch (error) {
       console.error(error);

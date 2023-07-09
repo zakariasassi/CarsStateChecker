@@ -1,4 +1,5 @@
 const { DataTypes } = require('sequelize');
+const CarModel = require('./Car')
 const db = require('../config/db'); // Replace with your database connection
 
 const InsuranceDocument = db.define('InsuranceDocument', {
@@ -6,10 +7,6 @@ const InsuranceDocument = db.define('InsuranceDocument', {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
-  },
-  car_id : {
-    type: DataTypes.INTEGER,
-    allowNull: false,
   },
   companyName: {
     type: DataTypes.STRING,
@@ -86,6 +83,10 @@ const InsuranceDocument = db.define('InsuranceDocument', {
     freezeTableName : true, //
     timestamps : true,
 });
+
+
+CarModel.hasMany(InsuranceDocument)
+InsuranceDocument.belongsTo(CarModel)
 
 
 InsuranceDocument.sync({alter : true}).then(() => {

@@ -1,15 +1,112 @@
 
 const jomrok = require('../model/Jomrok'); // Adjust the path to your model file
-
+const CarModel = require('../model/Car')
 // Create a new "jomrok" entry
 exports.createJomrok = async (req, res) => {
-  try {
-    const createdJomrok = await jomrok.create(req.body);
-    res.status(201).json(createdJomrok);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'An error occurred while creating the "jomrok" entry' });
-  }
+
+
+  const {
+    eleasePermitNumber,
+    releasedGoods,
+    shipName, 
+   arrivalDate, 
+   importerName, 
+   customsDeclarationNumber, 
+   customsReceiptNumber, 
+   goodsStorageLocation, 
+   warehouseNumber, 
+   parcelsCount, 
+   parcelsDetails, 
+   totalAmount, 
+   shippingPolicy, 
+   agentName, 
+   date, 
+   goodsDescription, 
+  
+  
+  
+    //car details
+  
+    boardNumber, 
+    chassisNumber, 
+    vehicleId, 
+    typeOfCar, 
+    carClass, 
+    carColour, 
+    yearMade, 
+    countryOfManufacture, 
+    carStatus, 
+    horsePower, 
+    carLoad, 
+    fuelType, 
+    typeOfJob, 
+    numberOfPassengers, 
+    placeOfRegistration
+
+  } = req.body
+
+  
+ 
+
+
+
+
+    await CarModel.create(
+      {
+     
+
+      
+        //car details
+      
+        boardNumber, 
+        chassisNumber, 
+        vehicleId, 
+        typeOfCar, 
+        carClass, 
+        carColour, 
+        yearMade, 
+        countryOfManufacture, 
+        carStatus, 
+        horsePower, 
+        carLoad, 
+        fuelType, 
+        typeOfJob, 
+        numberOfPassengers, 
+        placeOfRegistration
+
+      } 
+    ).then( async (resulte) => {
+          await jomrok.create({
+            CarCarId : resulte.carId ,
+            eleasePermitNumber,
+            releasedGoods,
+            shipName, 
+           arrivalDate, 
+           importerName, 
+           customsDeclarationNumber, 
+           customsReceiptNumber, 
+           goodsStorageLocation, 
+           warehouseNumber, 
+           parcelsCount, 
+           parcelsDetails, 
+           totalAmount, 
+           shippingPolicy, 
+           agentName, 
+           date, 
+           goodsDescription, 
+          
+          }).then(() => {
+            res.status(201).json({ success: true, message : 'تمت تأمين السيارة' });
+
+          }).catch( error => {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+          })
+    }).catch(error => {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+    })
+
 };
 
 // Get all "jomrok" entries

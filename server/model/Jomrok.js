@@ -1,4 +1,5 @@
 const { DataTypes } = require("sequelize");
+const CarModel = require('./Car')
 const db = require("../config/db"); // Adjust the path to your Sequelize configuration file
 
 const jomrok = db.define(
@@ -9,14 +10,12 @@ const jomrok = db.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    car_id: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+
     release_permit_number: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+
     Place_of_customs_possession: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -99,6 +98,11 @@ const jomrok = db.define(
     freezeTableName: true,
   }
 );
+
+
+CarModel.hasMany(jomrok)
+jomrok.belongsTo(CarModel)
+
 
 jomrok.sync({ alter: true }).then(() => {
   console.log("jomrok Sync");

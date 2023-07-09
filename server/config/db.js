@@ -31,7 +31,7 @@ pool: {
       timestamps: false,
       
     },
-    logging : false,
+    logging : true,
   }
 );
 
