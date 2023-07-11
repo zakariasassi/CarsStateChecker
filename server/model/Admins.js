@@ -28,7 +28,7 @@ fullname : {
 },
 
     role : {
-        type : DataTypes.INTEGER,
+        type : DataTypes.STRING,
         allowNull : false, //Make sure to change this
     },
 

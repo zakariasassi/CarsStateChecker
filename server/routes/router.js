@@ -9,7 +9,7 @@ const insuranceDocumentController = require('../controller/IncuranceDepartmentCo
 const Reports = require('../controller/ReportsController')
 const Employes = require('../controller/EmployesController')
 const Car = require('../controller/CarController')
-
+const RolesController = require('../controller/RolesController')
 
 
 
@@ -134,6 +134,8 @@ router.post('/loginemployee' ,Employes.loginemployee )
 
 router.post('/SingedgenerateReport' , Reports.SingedgenerateReport)
 
+
+router.get('/getallroles' ,  RolesController.getallroles )
 
 
 

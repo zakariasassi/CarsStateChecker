@@ -61,6 +61,31 @@ const activeadmin = async (e , id) => {
     <>
 
     <Toaster position='top-right' />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <div className="flex flex-col items-center p-5 w-full">
         <div className="w-full overflow-x-auto w-full">
           <table className="table-auto w-full" dir="rtl">
@@ -82,7 +107,7 @@ const activeadmin = async (e , id) => {
                   <td className="text-center">{admin.fullname}</td>
                   <td className="text-center">{admin.username}</td>
                   <td className="text-center">{admin.email}</td>
-                  <td className="text-center">Superuser</td>
+                  <td className="text-center">{admin.role}</td>
                   <td className="text-center">
                     <span className=" p-2 rounded-lg bg-red-500 text-white "><span className=' m-2 mt-2'>{admin.state ?  "مفعل" : "غير مفعل"}</span></span>
                   </td>

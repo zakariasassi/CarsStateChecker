@@ -1,120 +1,69 @@
-import React, { useState, useEffect } from "react";
-import { Box } from "@mui/material";
-import { url } from "../../constent/url";
-import axios from "axios";
-function SInedCars() {
-  const [carsData, setCarsData] = useState([]);
-  const [showModal, setShowModal] = useState(false);
-  const [cardetails, setCarDetails] = useState({});
-  const getdata = async () => {
-    await axios
-      .get(url + "/getLicenceDepartments")
-      .then((response) => {
-        setCarsData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  };
+import axios from 'axios'
+import React  , {useEffect , useState}  from 'react'
+import { url } from '../../constent/url'
 
-  const showCarDetails = (e, car) => {
-    setCarDetails(car);
-    console.log(cardetails);
-    setShowModal(true);
-  };
-  const deletecarsData = async (e, id) => {
-    e.preventDefault();
-    await axios.delete(url + `/deleteLicenceDepartment/${id}`).then((res) => {
-      console.log(res);
-      getdata();
-    });
-  };
-  useEffect(() => {}, []);
-  useEffect(() => {
-    getdata();
-  }, []);
+function MangeIncuranceCars() {
+    const [cardetails, setCarDetails] = useState({});
 
+    const [incuranceData , setIncuranceData ] = useState([])
+    const [showModal, setShowModal] = useState(false);
+
+    const showCarDetails = (e, car) => {
+        setCarDetails(car);
+        console.log(cardetails);
+        setShowModal(true);
+      };
+      
+        const getallincurance = async () => {
+            await axios.get(url + "/getAllInsuranceDocuments").then( res => {
+                setIncuranceData(res.data.data)
+                console.log(res.data)
+            })
+        }
+
+
+
+    useEffect(() => {
+        getallincurance()
+    },[])
   return (
-    <div className="flex flex-col items-center p-5 w-full">
-      <div className="w-full overflow-x-auto w-full">
-        <table className="table m-5 p-lg-5" dir="rtl">
-          <thead>
-            <tr>
-              <th scope="col" style={{ textAlign: "center" }}>
-                الرقم التسلسلي
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                قسم ترخيص
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                {" "}
-                رقم المركبة
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                {" "}
-                صالحة للاستعمال لمدة
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                اسم الفاحص
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                التاريخ
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                بيانات السيارة
-              </th>
-              <th scope="col" style={{ textAlign: "center" }}>
-                عمليات
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {carsData.map((car, index) => (
-              <tr key={index}>
-                <td style={{ textAlign: "center" }}>{car.id}</td>
-                <td style={{ textAlign: "center" }}>{car.license_section}</td>
-                <td style={{ textAlign: "center" }}>{car.vehicle_number}</td>
-                <td style={{ textAlign: "center" }}>{car.usable_for}</td>
-                <td style={{ textAlign: "center" }}>{car.examiners_name}</td>
-                <td style={{ textAlign: "center" }}>{car.createdAt}</td>
-                <td style={{ textAlign: "center" }}>
-                  <button
-                    onClick={(e) => showCarDetails(e, car.Car)}
-                    className="btn btn-outline-success btn-circle btn-lg btn-circle m-2"
-                  >
-                    <i className="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </td>
-                <td
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <button
-                    onClick={(e) => {
-                      deletecarsData(e, car.id);
-                    }}
-                    type="button"
-                    className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2"
-                  >
-                    <i className="fa fa-trash"></i>
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2"
-                  >
-                    <i className="fa fa-pen"></i>
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <>
+        <div className="container  py-8 m-3   bg-gray-100 rounded-2xl" dir='rtl'>
 
-      {showModal ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-4">
+      {incuranceData.map((item) => (
+        <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
+          <h3 className="text-lg font-bold mb-2 text-green-500">الاسم المؤمن عليه:</h3>
+          <p className="text-gray-600 mb-2">شركة التأمين: {item.companyName}</p>
+          <p className="text-gray-600 mb-2">رقم الوثيقة: {item.documentNumber}</p>
+          <p className="text-gray-600 mb-2">نوع التأمين: {item.insuranceType}</p>
+          {item.Car && (
+            <div>
+              <h4 className="text-md font-bold mt-4 mb-2 text-green-500">معلومات السيارة:</h4>
+              <p className="text-gray-600 mb-2">رقم اللوحة: {item.Car.boardNumber}</p>
+              <p className="text-gray-600 mb-2">رقم الشاسيه: {item.Car.chassisNumber}</p>
+              <p className="text-gray-600 mb-2">رقم المركبة: {item.Car.vehicleId}</p>
+              <button onClick={(e) => showCarDetails(e, item.Car)}  className='bg-green-500  text-white text-xs p-2 border-0 shadow-md '>عرض كل البيانات</button>
+            </div>
+          )}
+          <div className="flex justify-between flex-col items-center mt-4">
+            <span className="text-sm text-gray-600" dir='rtl'>تاريخ بدء التأمين:{item.insuranceStartDate}</span>
+            <span className="text-sm text-gray-600" dir='rtl'>تاريخ انتهاء التأمين:{item.insuranceEndDate}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+      
+
+
+</div>
+
+
+
+
+
+
+{showModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -224,8 +173,11 @@ function SInedCars() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-    </div>
-  );
+
+
+
+    </>
+  )
 }
 
-export default SInedCars;
+export default MangeIncuranceCars

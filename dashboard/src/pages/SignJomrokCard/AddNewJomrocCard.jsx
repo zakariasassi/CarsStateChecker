@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import axios from "axios";
 import { url } from "../../constent/url";
+import toast, { Toaster } from "react-hot-toast";
+
+
+
+
 function AddNewJomrocCard() {
   const [releasePermitNumber, setReleasePermitNumber] = useState("");
   const [releasedGoods, setReleasedGoods] = useState("");
@@ -46,11 +51,53 @@ function AddNewJomrocCard() {
       const [placeOfRegistration, setPlaceOfRegestration] = useState("");
   
     
-      
+      const notifyerr = (msg) => toast.error(msg);
+  const notifyok = (msg) => toast.success(msg);
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+
+    if(
+
+      releasePermitNumber === "" ||
+      releasedGoods === "" ||
+      shipName === "" || 
+      arrivalDate === "" || 
+      importerName === "" || 
+      customsDeclarationNumber === "" || 
+      customsReceiptNumber === "" || 
+      goodsStorageLocation === "" || 
+      warehouseNumber === "" || 
+      parcelsCount === "" || 
+      parcelsDetails === "" || 
+      totalAmount === "" || 
+      shippingPolicy === "" || 
+      agentName === "" || 
+      date === "" || 
+      goodsDescription === "" ||  
+
+      boardNumber === "" || 
+      chassisNumber === "" || 
+      vehicleId === "" || 
+      typeOfCar === "" || 
+      carClass === "" || 
+      carColour === "" || 
+      yearMade === "" || 
+      countryOfManufacture === "" || 
+      carStatus === "" || 
+      horsePower === "" || 
+      carLoad === "" || 
+      fuelType === "" || 
+      typeOfJob === "" || 
+      numberOfPassengers === "" || 
+      placeOfRegistration
+
+    ){
+      notifyerr("يرجي تعبئة كل البيانات")
+    }else{
     // Create an object with the field values
     const data = {
       release_permit_number: releasePermitNumber,
@@ -94,7 +141,11 @@ function AddNewJomrocCard() {
       .post(url + '/createJomrok', data)
       .then((response) => {
         // Handle the response
-        console.log(response.data);
+        if(response.data.success === true) {
+          notifyok("تمت عملية الاضافة بنجاح")
+        }else{
+          notifyerr("هناك مشكلة في عملية الاضافة")
+        }
         // Reset the form or perform any other actions
       })
       .catch((error) => {
@@ -102,9 +153,12 @@ function AddNewJomrocCard() {
         console.error(error);
         // Display an error message or perform any other error handling
       });
+    }
+
   };
   return (
     <>
+    <Toaster />
       <Box
         style={{
           display: "flex",
@@ -124,7 +178,7 @@ function AddNewJomrocCard() {
                   <label className="block text-lg mb-2">
                     رقم إذن الإفراج الجمركي:
                   </label>
-                  <input onChange={e => setReleasePermitNumber(e.target.value)} className="form-control" type="text" />
+                  <input   onChange={e => setReleasePermitNumber(e.target.value)} className="form-control" type="number" />
                 </div>
 
 
@@ -158,14 +212,14 @@ function AddNewJomrocCard() {
                   <label className="block text-lg mb-2">
                     رقم الإقرار الجمركي:
                   </label>
-                  <input onChange={e => setCustomsDeclarationNumber(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setCustomsDeclarationNumber(e.target.value)}  className="form-control" type="number" />
                 </div>
 
                 <div>
                   <label className="block text-lg mb-2">
                     رقم الإيصال الجمركي:
                   </label>
-                  <input onChange={e => setCustomsReceiptNumber(e.target.value)}   className="form-control" type="text" />
+                  <input onChange={e => setCustomsReceiptNumber(e.target.value)}   className="form-control" type="number" />
                 </div>
 
                 <div>
@@ -177,12 +231,12 @@ function AddNewJomrocCard() {
 
                 <div>
                   <label className="block text-lg mb-2">رقم المخزن:</label>
-                  <input onChange={e => setWarehouseNumber(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setWarehouseNumber(e.target.value)}  className="form-control" type="number" />
                 </div>
 
                 <div>
                   <label className="block text-lg mb-2">عدد الطرود:</label>
-                  <input onChange={e => setParcelsCount(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setParcelsCount(e.target.value)}  className="form-control" type="number" />
                 </div>
 
                 <div>
@@ -194,12 +248,12 @@ function AddNewJomrocCard() {
 
                 <div>
                   <label className="block text-lg mb-2">المبلغ الإجمالي:</label>
-                  <input onChange={e => setTotalAmount(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setTotalAmount(e.target.value)}  className="form-control" type="number" />
                 </div>
 
                 <div>
                   <label className="block text-lg mb-2">بوليصة الشحن:</label>
-                  <input onChange={e => setShippingPolicy(e.target.value)}  className="form-control" type="text" />
+                  <input onChange={e => setShippingPolicy(e.target.value)}  className="form-control" type="number" />
                 </div>
 
                 <div>
@@ -239,7 +293,7 @@ function AddNewJomrocCard() {
                   <input
                     onChange={(e) => setBoardNumber(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -262,7 +316,7 @@ function AddNewJomrocCard() {
                   <input
                     onChange={(e) => setVehicleId(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -335,7 +389,7 @@ function AddNewJomrocCard() {
                   <input
                     onChange={(e) => setHorsePower(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -345,7 +399,7 @@ function AddNewJomrocCard() {
                   <input
                     onChange={(e) => setCarLoad(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -375,7 +429,7 @@ function AddNewJomrocCard() {
                   <input
                     onChange={(e) => setNUmberOfPassengers(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>

@@ -17,6 +17,7 @@ import Home from "./pages/Home/Home";
 import { AuthContext } from "./context/AuthContext";
 import Employees from "./pages/Employes/Employees";
 import AddEmploy from "./pages/AddEmploye/AddEmploy";
+import MangeIncuranceCars from "./pages/MangeIncuranceCars/MangeIncuranceCars";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -78,6 +79,14 @@ function App() {
             path="/insurance"
             element={login ? <Layout view={<Insurance />} /> : <Login />}
           />
+          <Route
+            path="/insurancecars"
+            element={login ? <Layout view={<MangeIncuranceCars />} /> : <Login />}
+          />
+
+
+
+
           <Route
             path="/insurancereports"
             element={login ? <Layout view={<InsuranceReports />} /> : <Login />}

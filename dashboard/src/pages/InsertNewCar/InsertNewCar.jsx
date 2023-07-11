@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import { Box } from "@mui/material";
 import { url } from "../../constent/url";
 import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+
 function InsertNewCar() {
+
+  const notifyerr = (msg) => toast.error(msg);
+  const notifyok = (msg) => toast.success(msg);
+
+
+
   const [license_section, setLicenceSection] = useState("");
   const [vehicle_number, setVehicleNumber] = useState("");
   const [usable_for, setUserbleFor] = useState("");
@@ -33,43 +41,82 @@ function InsertNewCar() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post(url + "/createLicenceDepartment", {
-        license_section,
-        vehicle_number,
-        usable_for,
-        examiners_name,
-        examination_date,
+
+    if (
+      license_section === ""  ||
+      vehicle_number === ""  ||
+      usable_for === ""  ||
+      examiners_name === ""  ||
+      examination_date === ""  ||
 
 
 
 
-        //create car 
-        boardNumber, 
-        chassisNumber, 
-        vehicleId, 
-        typeOfCar, 
-        carClass, 
-        carColour, 
-        yearMade, 
-        countryOfManufacture, 
-        carStatus, 
-        horsePower, 
-        carLoad, 
-        fuelType, 
-        typeOfJob, 
-        numberOfPassengers, 
-        placeOfRegistration
-
-
-      });
-
-      console.log(response);
-
-      // Handle response or perform additional actions
-    } catch (error) {
-      // Handle error
+      //create car 
+      boardNumber === ""  || 
+      chassisNumber === ""  || 
+      vehicleId === ""  || 
+      typeOfCar === ""  || 
+      carClass === ""  || 
+      carColour === ""  || 
+      yearMade === ""  || 
+      countryOfManufacture === ""  || 
+      carStatus === ""  || 
+      horsePower === ""  || 
+      carLoad === ""  || 
+      fuelType === ""  || 
+      typeOfJob === ""  || 
+      numberOfPassengers === ""  || 
+      placeOfRegistration === "" 
+    ){
+      notifyerr("الرجاء تعبئة كل الحقول")
+    }else{
+      try {
+        const response = await axios.post(url + "/createLicenceDepartment", {
+          license_section,
+          vehicle_number,
+          usable_for,
+          examiners_name,
+          examination_date,
+  
+  
+  
+  
+          //create car 
+          boardNumber, 
+          chassisNumber, 
+          vehicleId, 
+          typeOfCar, 
+          carClass, 
+          carColour, 
+          yearMade, 
+          countryOfManufacture, 
+          carStatus, 
+          horsePower, 
+          carLoad, 
+          fuelType, 
+          typeOfJob, 
+          numberOfPassengers, 
+          placeOfRegistration
+  
+  
+        });
+  
+        console.log(response)
+        if(response.data.success === true){
+          notifyok("تمت عملية الاضافة بنجاح")
+        }else{
+          notifyerr("هناك مشكلة في عملية الاضافة")
+        }
+  
+        // Handle response or perform additional actions
+      } catch (error) {
+        console.log(error)
+      }
     }
+
+
+
   };
 
   return (
@@ -82,6 +129,8 @@ function InsertNewCar() {
           width: "100%",
         }}
       >
+  <Toaster />
+      
         <div className="w-100" >
           <div className="p-lg-5" >
             <div className="max-w-100 mx-auto" dir="rtl">
@@ -132,6 +181,7 @@ function InsertNewCar() {
                       اسم الفاحص
                   </label>
                   <input
+                  required
                     onChange={(e) => setExaminersName(e.target.value)}
                     className="form-control"
                     type="text"
@@ -164,7 +214,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setBoardNumber(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -177,7 +227,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setChassisNumber(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -187,7 +237,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setVehicleId(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -227,7 +277,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setYearMade(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -260,7 +310,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setHorsePower(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -270,7 +320,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setCarLoad(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -300,7 +350,7 @@ function InsertNewCar() {
                   <input
                     onChange={(e) => setNUmberOfPassengers(e.target.value)}
                     className="form-control"
-                    type="text"
+                    type="number"
                     required
                   />
                 </div>
@@ -331,6 +381,10 @@ function InsertNewCar() {
             </div>
           </div>
         </div>
+
+
+
+        
       </Box>
     </>
   );

@@ -106,7 +106,11 @@ exports.createInsuranceDocument = async (req, res) => {
 // Get all insurance documents
 exports.getAllInsuranceDocuments = async (req, res) => {
   try {
-    const insuranceDocuments = await InsuranceDocument.findAll();
+    const insuranceDocuments = await InsuranceDocument.findAll({
+      include : [
+        {model : CarModel}
+      ]
+    });
     res.status(200).json({ success: true, data: insuranceDocuments });
   } catch (error) {
     console.error(error);

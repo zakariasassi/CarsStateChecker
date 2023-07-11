@@ -45,28 +45,28 @@ function AddEmploy() {
             onChange={(e) => setFullname(e.target.value)}
             type="text"
             placeholder="اسم الموظف الثلاثي"
-            className="input w-full max-w-5xl mt-2"
+            className="input w-full max-w-5xl mt-2 h-10 p-2"
           />
           <input
             onChange={(e) => setusername(e.target.value)}
             type="text"
             placeholder="اسم المستخدم"
-            className="input w-full max-w-5xl mt-2"
+            className="input w-full max-w-5xl mt-2 h-10 p-2"
           />
           <input
             onChange={(e) => setemail(e.target.value)}
             type="text"
             placeholder="البريد الالكتروني"
-            className="input w-full max-w-5xl mt-2"
+            className="input w-full max-w-5xl mt-2 h-10 p-2"
           />
           <input
             onChange={(e) => setpassword(e.target.value)}
             type="text"
             placeholder="كلمة المرور"
-            className="input w-full max-w-5xl mt-2"
+            className="input w-full max-w-5xl mt-2 h-10 p-2"
           />
 
-          <select             className="input w-full max-w-5xl mt-2"
+          <select className="input w-full max-w-5xl mt-2 h-10 p-2"
   onChange={e => setRole(e.target.value)}>
             <option>اختر صلاحية</option>
             <option value={'li'}>نراخيص</option>

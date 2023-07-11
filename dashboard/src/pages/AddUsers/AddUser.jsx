@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { RiUser3Line } from "react-icons/ri";
 import { RiLockPasswordLine } from "react-icons/ri";
@@ -16,6 +16,8 @@ function AddUser() {
 
   const notify = (msg) => toast(msg);
 
+
+  const [rolesdata , setRoles] = useState([])
   const [formData, setFormData] = useState({
     username: "",
     password: "",
@@ -56,6 +58,16 @@ function AddUser() {
       // Handle server error
     }
   };
+
+const getallroles = async () => {
+  await axios.get(url + '/getallroles').then(res => {
+ 
+    setRoles(res.data.data)
+  }).catch(err => console.log(err))
+}
+  useEffect(()=> {
+    getallroles()
+  },[] )
 
   return (
     <>
@@ -157,8 +169,14 @@ function AddUser() {
                     className="appearance-none border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:border-indigo-500 text-right"
                   >
                     <option value="">اختر الدور</option>
-                    <option value={1}>مدير</option>
-                    <option value={2}>مستخدم</option>
+                    {
+                      rolesdata.map((index , key ) => {
+                        return (
+                          <option key={key} value={index.name}> {index.name}</option>
+                        )
+
+                      })
+                    }
                   </select>
                 </div>
 

@@ -6,22 +6,22 @@ exports.createJomrok = async (req, res) => {
 
 
   const {
-    eleasePermitNumber,
-    releasedGoods,
-    shipName, 
-   arrivalDate, 
-   importerName, 
-   customsDeclarationNumber, 
-   customsReceiptNumber, 
-   goodsStorageLocation, 
-   warehouseNumber, 
-   parcelsCount, 
-   parcelsDetails, 
-   totalAmount, 
-   shippingPolicy, 
-   agentName, 
-   date, 
-   goodsDescription, 
+    release_permit_number,
+    Place_of_customs_possession,
+    ship_name, 
+    arrival_date, 
+    importer_name, 
+    customs_declaration_number, 
+    customs_receipt_number, 
+    goods_storage_location, 
+    warehouse_number, 
+    parcels_count, 
+    parcels_details, 
+    total_amount, 
+    shipping_policy, 
+    agent_name, 
+    date, 
+    goods_description,  
   
   
   
@@ -78,22 +78,22 @@ exports.createJomrok = async (req, res) => {
     ).then( async (resulte) => {
           await jomrok.create({
             CarCarId : resulte.carId ,
-            eleasePermitNumber,
-            releasedGoods,
-            shipName, 
-           arrivalDate, 
-           importerName, 
-           customsDeclarationNumber, 
-           customsReceiptNumber, 
-           goodsStorageLocation, 
-           warehouseNumber, 
-           parcelsCount, 
-           parcelsDetails, 
-           totalAmount, 
-           shippingPolicy, 
-           agentName, 
-           date, 
-           goodsDescription, 
+            release_permit_number,
+            Place_of_customs_possession,
+            ship_name, 
+            arrival_date, 
+            importer_name, 
+            customs_declaration_number, 
+            customs_receipt_number, 
+            goods_storage_location, 
+            warehouse_number, 
+            parcels_count, 
+            parcels_details, 
+            total_amount, 
+            shipping_policy, 
+            agent_name, 
+            date, 
+            goods_description, 
           
           }).then(() => {
             res.status(201).json({ success: true, message : 'تمت تأمين السيارة' });
@@ -112,7 +112,11 @@ exports.createJomrok = async (req, res) => {
 // Get all "jomrok" entries
 exports.getAllJomrok = async (req, res) => {
   try {
-    const allJomrok = await jomrok.findAll();
+    const allJomrok = await jomrok.findAll({
+      include: [
+        {model : CarModel}
+      ]
+    });
     res.status(200).json(allJomrok);
   } catch (error) {
     console.error(error);
