@@ -59,7 +59,7 @@ router.put('/updateEmploy/:id', Employes.updateEmploy);
 router.delete('/deleteEmploy/:id', Employes.deleteEmploy);
 router.put('/restrictEmploy/:id' , Employes.restrictEmploy)
 router.put('/activeEmploy/:id' , Employes.activeEmploy)
-
+router.get('/getlastfiveemployyes' ,  Employes.getlastfiveemployyes )
 
 
 

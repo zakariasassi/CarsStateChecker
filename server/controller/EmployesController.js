@@ -202,3 +202,28 @@ exports.activeEmploy = async ( req , res , next ) => {
 
  
    }
+
+
+
+   exports.getlastfiveemployyes = async (req , res ) => {
+    await Employes.findAll({
+      limit:5 ,
+      order : [
+        ['id', 'DESC']
+      ]
+    }).then((data)  => {
+        res.json(
+            {
+                msg :'',
+                state : 1,
+                data : data
+            }
+        )
+    }).catch( err => {
+        console.log(err)
+        res.json({
+            msg : 'مشكلة في النظام ',
+            state : 0
+        })
+    })
+}

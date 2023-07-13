@@ -3,7 +3,8 @@ import { Box } from "@mui/material";
 import styles from "./home-style";
 import index from "../../constent/index";
 import React , {useState , useEffect}from "react";
-
+import axios from 'axios'
+import { url } from "../../constent/url";
 
 
 function Home() {
@@ -15,6 +16,13 @@ function Home() {
     { id: 3, name: "عبدالله محمود", role: "مستخدم", date: "2023-05-16" },
     // Add more users here
   ];
+
+  const getlastfiveemployees = async () => {
+    await axios.get(url + '/getlastfiveemployyes').then(res => {
+      setUsers(res.data.data) 
+    }) .catch( err => {console.log(err)})
+  }
+  
   return (
     <>
    <div className="bg-gradient-to-b from-green-900 to-green-500  w-full h-full p-10" dir='rtl' style={{height:'auto'}}>
@@ -32,7 +40,7 @@ function Home() {
       </div>
 
       <div className="mt-10">
-        <h2 className="text-2xl font-bold text-white mb-6">آخر 10 مستخدمين</h2>
+        <h2 className="text-2xl font-bold text-white mb-6">آخر 10  حسابات موظفين</h2>
         <table className="w-full">
           <thead>
             <tr>
