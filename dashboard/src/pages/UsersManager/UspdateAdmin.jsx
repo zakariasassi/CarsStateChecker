@@ -1,35 +1,25 @@
-import React, { useEffect, useState } from "react";
-import { Box } from "@mui/material";
-import { RiUser3Line } from "react-icons/ri";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { RiMailLine } from "react-icons/ri";
-import { RiUserSettingsLine } from "react-icons/ri";
+import React , {useEffect , useState} from 'react'
+import { useLocation } from 'react-router-dom'
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import "./Addusers.css";
 import { url } from "../../constent/url";
  
 
+function UspdateAdmin() {
 
-
-function AddUser() {
-
+  const location = useLocation();
   const notify = (msg) => toast(msg);
 
 
   const [rolesdata , setRoles] = useState([])
   const [formData, setFormData] = useState({
-    username: "",
+    username: location.state.admindata.username,
     password: "",
-    role: 0,
-    fullname: "",
-    email: "",
+    role: location.state.admindata.role,
+    fullname: location.state.admindata.fullname,
+    email: location.state.admindata.email,
   });
-
   const { username, password, role, fullname, email } = formData;
-
-  
-
 
 
   const handleChange = (e) => {
@@ -46,7 +36,7 @@ function AddUser() {
     }
 
     try {
-      const response = await axios.post( url +  "/addadmin", formData);
+      const response = await axios.put( url +  `/updateadmin/${location.state.admindata.id}`, formData);
       const data = response.data;
       if (data.state === 1) {
         notify(data.message)
@@ -63,16 +53,21 @@ function AddUser() {
     }
   };
 
-const getallroles = async () => {
-  await axios.get(url + '/getallroles').then(res => {
- 
-    setRoles(res.data.data)
-  }).catch(err => console.log(err))
-}
-  useEffect(()=> {
-    getallroles()
-  },[] )
 
+  const getallroles = async () => {
+    await axios.get(url + '/getallroles').then(res => {
+   
+      setRoles(res.data.data)
+    }).catch(err => console.log(err))
+  }
+    useEffect(()=> {
+      getallroles()
+    },[] )
+  
+
+  useEffect(() => {
+    console.log(location.state.admindata);
+  } ,[])
   return (
     <>
     <Toaster position="top-right" />
@@ -80,7 +75,7 @@ const getallroles = async () => {
         <div className="w-full justify-center flex" >
           <div className="w-full flex justify-center">
             <div className="w-11/12  p-14 rounded">
-              <span className="text-3xl float-right ">اضافة مدير نظام</span>
+              <span className="text-3xl float-right ">تعديل مدير نظام</span>
 
               <form
                 className="bg-white rounded  text-right"
@@ -189,7 +184,7 @@ const getallroles = async () => {
                     type="submit"
                     className="bg-green-500 cursor-pointer  w-60  mt-10 float-right self-start text-white font-bold py-2 px-4 rounded"
                   >
-                    حفـــــظ
+                    تحديث البيانات
                   </button>
                 </div>
               </form>
@@ -198,7 +193,7 @@ const getallroles = async () => {
         </div>
     
     </>
-  );
+  )
 }
 
-export default AddUser;
+export default UspdateAdmin

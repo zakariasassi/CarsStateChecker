@@ -71,6 +71,65 @@ exports.createnewadmin = async (req, res) => {
 
 
 
+exports.updateadmin = async (req, res) => {
+  const { username, password, role, fullname, email , id } = req.body;
+  if (!username || !password || !role || !fullname || !email) {
+    return res.status(400).json({
+      message: "الرجاء ادخال كل البيانات",
+      state: 0,
+    });
+  }
+
+
+
+
+ 
+  try {
+
+
+
+
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newAdmin = await Admins.update({
+      username,
+      password: hashedPassword,
+      role,
+      fullname,
+      email,
+    },
+    {
+      where : {
+          id : req.params.id
+      }
+    }
+    );
+
+    if (newAdmin) {
+      return res.json({
+        message: "تم تحديث الحساب بنجاح",
+        state: 1,
+      });
+    } else {
+      return res.status(500).json({
+        message: "فشل تحديث الحساب ",
+        state: 0,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      message: "مشكلة في النظام راحع الادارة",
+      state: 0,
+    });
+  }
+
+
+
+};
+
+
 exports.loginadmin = async (req, res) => {
   const { username, password } = req.body;
   if (!username || !password) {

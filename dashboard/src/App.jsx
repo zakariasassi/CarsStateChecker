@@ -18,6 +18,10 @@ import { AuthContext } from "./context/AuthContext";
 import Employees from "./pages/Employes/Employees";
 import AddEmploy from "./pages/AddEmploye/AddEmploy";
 import MangeIncuranceCars from "./pages/MangeIncuranceCars/MangeIncuranceCars";
+import UspdateAdmin from "./pages/UsersManager/UspdateAdmin";
+import UpdateIncurance from "./pages/MangeIncuranceCars/UpdateIncurance";
+import UpdateSignCar from "./pages/MangeSinedCars/UpdateSignCar";
+import UpdateEmploye from "./pages/Employes/UpdateEmploye";
 
 function App() {
   const [login, setLogin] = useState(false);
@@ -55,6 +59,10 @@ function App() {
             path="/newuser"
             element={login ? <Layout view={<AddUser />} /> : <Login />}
           />
+                    <Route
+            path="/updateadmin"
+            element={login ? <Layout view={<UspdateAdmin />} /> : <Login />}
+          />
           <Route
             path="/roles"
             element={login ? <Layout view={<UsersRoles />} /> : <Login />}
@@ -63,6 +71,13 @@ function App() {
             path="/newcar"
             element={login ? <Layout view={<InsertNewCar />} /> : <Login />}
           />
+          <Route
+            path="/updatesignedcar"
+            element={login ? <Layout view={<UpdateSignCar />} /> : <Login />}
+          />
+          
+
+          
           <Route
             path="/showcars"
             element={login ? <Layout view={<SInedCars />} /> : <Login />}
@@ -84,9 +99,16 @@ function App() {
             element={login ? <Layout view={<MangeIncuranceCars />} /> : <Login />}
           />
 
+          <Route
+            path="/updateincurance"
+            element={login ? <Layout view={<UpdateIncurance />} /> : <Login />}
+          />
 
 
-
+          <Route
+            path="/updateemploye"
+            element={login ? <Layout view={<UpdateEmploye />} /> : <Login />}
+          />
           <Route
             path="/insurancereports"
             element={login ? <Layout view={<InsuranceReports />} /> : <Login />}

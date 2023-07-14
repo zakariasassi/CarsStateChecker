@@ -103,6 +103,10 @@ exports.createInsuranceDocument = async (req, res) => {
 
 
 
+
+
+
+
 // Get all insurance documents
 exports.getAllInsuranceDocuments = async (req, res) => {
   try {
@@ -133,22 +137,120 @@ exports.getInsuranceDocumentById = async (req, res) => {
   }
 };
 
-// Update an insurance document by ID
-exports.updateInsuranceDocument = async (req, res) => {
-  const { id } = req.params;
-  try {
-    const insuranceDocument = await InsuranceDocument.findByPk(id);
-    if (!insuranceDocument) {
-      return res.status(404).json({ success: false, error: 'Insurance document not found' });
-    }
-    await insuranceDocument.update(req.body);
-    res.status(200).json({ success: true, data: insuranceDocument });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ success: false, error: 'Failed to update insurance document' });
-  }
-};
 
+
+exports.updateInsuranceDocument = async (req, res) => {
+  const {
+    companyName , 
+    insuranceType, 
+    documentNumber, 
+    issuingBranch, 
+    insuranceStartDate, 
+    insuranceEndDate, 
+    customerNumber, 
+    insuredName, 
+    insuredAddress, 
+    Value_of_installment, 
+    Tax ,
+    Entry_fee, 
+    Stamp, 
+    Issuance_exp, 
+    Total, 
+  
+    //car details
+  
+    boardNumber, 
+    chassisNumber, 
+    vehicleId, 
+    typeOfCar, 
+    carClass, 
+    carColour, 
+    yearMade, 
+    countryOfManufacture, 
+    carStatus, 
+    horsePower, 
+    carLoad, 
+    fuelType, 
+    typeOfJob, 
+    numberOfPassengers, 
+    placeOfRegistration
+  } = req.body
+
+  
+ 
+
+
+
+
+    await CarModel.update(
+      {
+
+      
+        //car details
+      
+        boardNumber, 
+        chassisNumber, 
+        vehicleId, 
+        typeOfCar, 
+        carClass, 
+        carColour, 
+        yearMade, 
+        countryOfManufacture, 
+        carStatus, 
+        horsePower, 
+        carLoad, 
+        fuelType, 
+        typeOfJob, 
+        numberOfPassengers, 
+        placeOfRegistration
+
+      } , 
+      {
+        where : {
+          carId : req.params.carId
+        }
+      }
+    ).then( async (resulte) => {
+          await InsuranceDocument.update(
+           
+            {
+            companyName ,
+            CarCarId : resulte.carId ,
+            insuranceType, 
+            documentNumber, 
+            issuingBranch, 
+            insuranceStartDate, 
+            insuranceEndDate, 
+            customerNumber, 
+            insuredName, 
+            insuredAddress, 
+            Value_of_installment, 
+            Tax ,
+            Entry_fee, 
+            Stamp, 
+            Issuance_exp, 
+            Total, 
+          },
+          {
+            where : {
+              id : req.params.id
+            }
+          }
+          
+          ).then(() => {
+            res.status(201).json({ success: true, message : 'تمت تأمين السيارة' });
+
+          }).catch( error => {
+            console.error(error);
+            res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+          })
+    }).catch(error => {
+      console.error(error);
+      res.status(500).json({ success: false, error: 'فشلت عملية الاضافة' });
+    })
+
+
+  }
 // Delete an insurance document by ID
 exports.deleteInsuranceDocument = async (req, res) => {
   const { id } = req.params;

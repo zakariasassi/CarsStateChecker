@@ -53,9 +53,16 @@ export default function Sidebar() {
             </>
           )}
 
-          {userdata.role === "قسم التراخيص" && (
+
+          { userdata.role === "قسم التراخيص" && (
+            <SidebarLink to="/newcar" icon={<FaCar />} label="تسجيل مركبة" />
+
+          ) 
+
+          }
+
+          {(userdata.role === "قسم التراخيص" || userdata?.role === "مدير نظام" )   && (
             <>
-              <SidebarLink to="/newcar" icon={<FaCar />} label="تسجيل مركبة" />
               <SidebarLink
                 to="/showcars"
                 icon={<FaCar />}
@@ -64,13 +71,19 @@ export default function Sidebar() {
             </>
           )}
 
-          {userdata.role === "قسم الجمارك" && (
-            <>
-              <SidebarLink
+
+          { userdata.role === "قسم الجمارك" && (
+            <SidebarLink
                 to="/newjomrok"
                 icon={<FaCar />}
                 label="تسجيل مركبة جمركية"
               />
+          ) 
+
+          }
+          {(userdata.role === "قسم الجمارك" || userdata.role === "مدير نظام") && (
+            <>
+         
               <SidebarLink
                 to="/showjomrok"
                 icon={<FaCar />}
@@ -79,13 +92,22 @@ export default function Sidebar() {
             </>
           )}
 
-          {userdata.role === "قسم التأمين" && (
-            <>
-              <SidebarLink
+
+
+          { userdata.role === "قسم تأمين" && (
+            <SidebarLink
                 to="/insurance"
                 icon={<FaCar />}
                 label="تآمين سيارة"
               />
+          )
+
+
+          }
+
+          {(userdata.role === "قسم تأمين" || userdata.role === "مدير نظام") && (
+            <>
+           
               <SidebarLink
                 to="/insurancecars"
                 icon={<FaCar />}
@@ -114,7 +136,7 @@ export default function Sidebar() {
             </>
           )}
 
-          {userdata.role === "قسم التأمين" && (
+          {userdata.role === "قسم تأمين" && (
             <>
               <SidebarLink
                 to="/insurancereports"

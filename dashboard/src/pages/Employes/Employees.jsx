@@ -2,8 +2,11 @@ import React , {useEffect , useState} from 'react'
 import axios  from 'axios';
 import { url } from '../../constent/url';
 import { FaTrash, FaEdit, FaStopCircle } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 function Employees() {
+
+  const navigate = useNavigate()
     const [emplyees, setEmployees] = useState([]);
 
     const getallEmployees =  async () => {
@@ -24,6 +27,11 @@ function Employees() {
          getallEmployees()
       }
     
+
+      const gotoupdate = (e, data) => {;
+        e.preventDefault()
+        navigate("/updateemploye" , {state : data})
+      }
     const restrictuser = async (e , id) => {
       e.preventDefault();
       await  axios.put( url + `/restrictEmploy/${id}`).then((response) => {
@@ -95,7 +103,7 @@ function Employees() {
                     <button onClick={(e) => {deleteuser(e , admin.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                       <FaTrash />
                     </button>
-                    <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+                    <button onClick={e => gotoupdate(e , admin)} type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
                       <FaEdit />
                     </button>
                     <button type="button" onClick={ e =>  restrictuser( e , admin.id)} className="btn  bg-red-500 text-white btn-circle btn-lg btn-circle ml-2 hover:bg-red-700 text-white">

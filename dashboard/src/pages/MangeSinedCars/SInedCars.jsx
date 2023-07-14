@@ -2,7 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import { url } from "../../constent/url";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
+
 function SInedCars() {
+
+  const navigate = useNavigate()
+
   const [carsData, setCarsData] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [cardetails, setCarDetails] = useState({});
@@ -29,6 +36,14 @@ function SInedCars() {
       getdata();
     });
   };
+
+
+  const gotoupdate = async (e , car) => {
+    e.preventDefault();
+
+      navigate('/updatesignedcar' , {state : car})
+  }
+
   useEffect(() => {}, []);
   useEffect(() => {
     getdata();
@@ -102,6 +117,7 @@ function SInedCars() {
                     <i className="fa fa-trash"></i>
                   </button>
                   <button
+                    onClick={e => gotoupdate(e , car)}
                     type="button"
                     className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2"
                   >

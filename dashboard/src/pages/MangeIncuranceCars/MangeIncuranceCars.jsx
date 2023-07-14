@@ -1,69 +1,119 @@
-import axios from 'axios'
-import React  , {useEffect , useState}  from 'react'
-import { url } from '../../constent/url'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { url } from "../../constent/url";
+import { FaTrash, FaEdit, FaStopCircle } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+
 
 function MangeIncuranceCars() {
-    const [cardetails, setCarDetails] = useState({});
+  const navigate  = useNavigate()
 
-    const [incuranceData , setIncuranceData ] = useState([])
-    const [showModal, setShowModal] = useState(false);
+  const [cardetails, setCarDetails] = useState({});
 
-    const showCarDetails = (e, car) => {
-        setCarDetails(car);
-        console.log(cardetails);
-        setShowModal(true);
-      };
-      
-        const getallincurance = async () => {
-            await axios.get(url + "/getAllInsuranceDocuments").then( res => {
-                setIncuranceData(res.data.data)
-                console.log(res.data)
-            })
-        }
+  const [incuranceData, setIncuranceData] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+
+  const showCarDetails = (e, car) => {
+    setCarDetails(car);
+    console.log(cardetails);
+    setShowModal(true);
+  };
 
 
+  const deleteincurance = async (e , id) => {
+      await axios.delete( url + `/deleteInsuranceDocument/${id}`).then(res => {
+        console.log(res);
+      }).catch(err => { console.log(err); })
+      getallincurance()
+  }
 
-    useEffect(() => {
-        getallincurance()
-    },[])
+  const updateincurance = async (e , data) => {
+    navigate('/updateincurance' , {state : data})
+  }
+ 
+  const getallincurance = async () => {
+    await axios.get(url + "/getAllInsuranceDocuments").then((res) => {
+      setIncuranceData(res.data.data);
+      console.log(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getallincurance();
+  }, []);
   return (
     <>
-        <div className="container  py-8 m-3   bg-gray-100 rounded-2xl" dir='rtl'>
-
+      <div className="container  py-8 m-3   bg-gray-100 rounded-2xl" dir="rtl">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 m-4">
-      {incuranceData.map((item) => (
-        <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
-          <h3 className="text-lg font-bold mb-2 text-green-500">الاسم المؤمن عليه:</h3>
-          <p className="text-gray-600 mb-2">شركة التأمين: {item.companyName}</p>
-          <p className="text-gray-600 mb-2">رقم الوثيقة: {item.documentNumber}</p>
-          <p className="text-gray-600 mb-2">نوع التأمين: {item.insuranceType}</p>
-          {item.Car && (
-            <div>
-              <h4 className="text-md font-bold mt-4 mb-2 text-green-500">معلومات السيارة:</h4>
-              <p className="text-gray-600 mb-2">رقم اللوحة: {item.Car.boardNumber}</p>
-              <p className="text-gray-600 mb-2">رقم الشاسيه: {item.Car.chassisNumber}</p>
-              <p className="text-gray-600 mb-2">رقم المركبة: {item.Car.vehicleId}</p>
-              <button onClick={(e) => showCarDetails(e, item.Car)}  className='bg-green-500  text-white text-xs p-2 border-0 shadow-md '>عرض كل البيانات</button>
+          {incuranceData.map((item) => (
+            <div key={item.id} className="bg-white rounded-lg shadow-md p-4">
+              <h3 className="text-lg font-bold mb-2 text-green-500">
+                الاسم المؤمن عليه:
+              </h3>
+              <p className="text-gray-600 mb-2">
+                شركة التأمين: {item.companyName}
+              </p>
+              <p className="text-gray-600 mb-2">
+                رقم الوثيقة: {item.documentNumber}
+              </p>
+              <p className="text-gray-600 mb-2">
+                نوع التأمين: {item.insuranceType}
+              </p>
+              {item.Car && (
+                <div>
+                  <h4 className="text-md font-bold mt-4 mb-2 text-green-500">
+                    معلومات السيارة:
+                  </h4>
+                  <p className="text-gray-600 mb-2">
+                    رقم اللوحة: {item.Car.boardNumber}
+                  </p>
+                  <p className="text-gray-600 mb-2">
+                    رقم الشاسيه: {item.Car.chassisNumber}
+                  </p>
+                  <p className="text-gray-600 mb-2">
+                    رقم المركبة: {item.Car.vehicleId}
+                  </p>
+                  <button
+                    onClick={(e) => showCarDetails(e, item.Car)}
+                    className="bg-green-500  text-white text-xs p-2 border-0 shadow-md "
+                  >
+                    عرض كل البيانات
+                  </button>
+                </div>
+              )}
+              <div className="flex justify-between flex-col items-center mt-4">
+                <span className="text-sm text-gray-600" dir="rtl">
+                  تاريخ بدء التأمين:{item.insuranceStartDate}
+                </span>
+                <span className="text-sm text-gray-600" dir="rtl">
+                  تاريخ انتهاء التأمين:{item.insuranceEndDate}
+                </span>
+              </div>
+
+              <div className="flex-1">
+                <div className="flex justify-center items-center">
+                  <button
+                  onClick={ e => deleteincurance(e , item.id)}
+                    type="button"
+                    className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2"
+                  >
+                    <FaTrash  className="text-red-500" />
+                  </button>
+                  <button
+                    onClick={e => updateincurance(e ,  item)}
+                    type="button"
+                    className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2"
+                  >
+                    <FaEdit />
+                  </button>
+                </div>
+              </div>
             </div>
-          )}
-          <div className="flex justify-between flex-col items-center mt-4">
-            <span className="text-sm text-gray-600" dir='rtl'>تاريخ بدء التأمين:{item.insuranceStartDate}</span>
-            <span className="text-sm text-gray-600" dir='rtl'>تاريخ انتهاء التأمين:{item.insuranceEndDate}</span>
-          </div>
+          ))}
         </div>
-      ))}
-    </div>
-      
+      </div>
 
-
-</div>
-
-
-
-
-
-
-{showModal ? (
+      {showModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
@@ -97,8 +147,6 @@ function MangeIncuranceCars() {
                   <div className="flex-1">
                     <p>حالة السيارة</p>
                     {cardetails.carStatus}
-
-                    
                   </div>
                   <div className="flex-1">
                     <p>رقم الهيكل</p>
@@ -116,7 +164,6 @@ function MangeIncuranceCars() {
                   <div className="flex-1">
                     <p> القوة بالحصان </p>
                     {cardetails.horsePower}
-
                   </div>
 
                   <div className="flex-1">
@@ -126,27 +173,22 @@ function MangeIncuranceCars() {
                   <div className="flex-1">
                     <p> مكان تسجيل السيارة </p>
                     {cardetails.placeOfRegistration}
-
                   </div>
                   <div className="flex-1">
                     <p> نوع السيارة </p>
                     {cardetails.typeOfCar}
-
                   </div>
                   <div className="flex-1">
                     <p> نوع عمل السيارة </p>
                     {cardetails.typeOfJob}
-
                   </div>
                   <div className="flex-1">
                     <p> رقم المركبة </p>
                     {cardetails.vehicleId}
-
                   </div>
                   <div className="flex-1">
                     <p> سنة الصنع </p>
                     {cardetails.yearMade}
-
                   </div>
                 </div>
 
@@ -173,11 +215,8 @@ function MangeIncuranceCars() {
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
         </>
       ) : null}
-
-
-
     </>
-  )
+  );
 }
 
-export default MangeIncuranceCars
+export default MangeIncuranceCars;

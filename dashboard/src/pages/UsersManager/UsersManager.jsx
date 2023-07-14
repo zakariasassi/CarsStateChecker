@@ -4,8 +4,10 @@ import { Box } from '@mui/material';
 import { FaTrash, FaEdit, FaStopCircle } from 'react-icons/fa';
 import { url } from '../../constent/url';
 import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 function UsersManager() {
+  const navigate = useNavigate()
 
   const notify = (msg) => toast(msg);
 
@@ -19,6 +21,14 @@ function UsersManager() {
       console.error('Error fetching data:', error);
     });
   } 
+
+  const gotoupdatepage = ( e, user) => {
+    e.preventDefault();
+
+    navigate('/updateadmin' , {state : {admindata:user}})
+
+  }
+
 
   const deleteadmin = async ( e , id) => {
     e.preventDefault();
@@ -115,7 +125,7 @@ const activeadmin = async (e , id) => {
                     <button onClick={(e) => {deleteadmin(e , admin.id)}} type="button" className="btn btn-outline-danger btn-circle btn-lg btn-circle m-2">
                       <FaTrash className='text-red-500' />
                     </button>
-                    <button type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
+                    <button onClick={(e) => {gotoupdatepage(e , admin)}} type="button" className="btn btn-outline-warning btn-circle btn-lg btn-circle m-2">
                       <FaEdit />
                     </button>
                     <button type="button" onClick={ e =>  restrictadmin( e , admin.id)} className="btn bg-red-500 btn-outline-danger hover:bg-red-800 btn-circle btn-lg btn-circle ml-2">

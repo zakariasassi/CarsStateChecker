@@ -20,7 +20,7 @@ router.get('/getAllAdmins' , Admins.getalladmins)
 router.delete('/deleteadmin/:id' , Admins.deleteadmin )
 router.put('/restrictadmin/:id' , Admins.restrictadmin)
 router.put('/activeadmin/:id' , Admins.activeadmin)
-
+router.put('/updateadmin/:id' , Admins.updateadmin)
 
 
 // Create a new record
@@ -33,7 +33,7 @@ router.get('/getLicenceDepartments', licnencesdepartmentController.getLicenceDep
 router.get('/getLicenceDepartmentById/:id', licnencesdepartmentController.getLicenceDepartmentById);
 
 // Update a record
-router.put('/updateLicenceDepartment/:id', licnencesdepartmentController.updateLicenceDepartment);
+router.put('/updateLicenceDepartment/:id/:carid', licnencesdepartmentController.updateLicenceDepartment);
 
 // Delete a record
 router.delete('/deleteLicenceDepartment/:id', licnencesdepartmentController.deleteLicenceDepartment);
@@ -101,7 +101,7 @@ router.get('/getAllInsuranceDocuments', insuranceDocumentController.getAllInsura
 router.get('/getInsuranceDocumentById/:id', insuranceDocumentController.getInsuranceDocumentById);
 
 // Update an insurance document by ID
-router.put('/updateInsuranceDocument/:id', insuranceDocumentController.updateInsuranceDocument);
+router.put('/updateInsuranceDocument/:id/:carId', insuranceDocumentController.updateInsuranceDocument);
 
 // Delete an insurance document by ID
 router.delete('/deleteInsuranceDocument/:id', insuranceDocumentController.deleteInsuranceDocument);
